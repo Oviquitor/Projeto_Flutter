@@ -3,6 +3,7 @@ import 'package:project/components/custom_button.dart';
 import 'package:project/components/custom_text.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:project/views/home.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -43,6 +44,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController? _emailController = TextEditingController();
+  final TextEditingController? _passwordController = TextEditingController();
   //função login
   static Future<User?> loginUsingEmailPassword(
       {required String email,
@@ -64,8 +67,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController _emailController = TextEditingController();
-    TextEditingController _passwordController = TextEditingController();
     return Scaffold(
       backgroundColor: Colors.green,
       body: Column(
@@ -93,16 +94,18 @@ class _LoginScreenState extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   //Email
-                  const CustomText(
+                  CustomText(
                     icon: Icons.email,
                     label: 'Email',
+                    controller: _emailController,
                   ),
 
                   //Senha
-                  const CustomText(
+                  CustomText(
                     icon: Icons.lock,
                     label: 'Senha',
                     isSecret: true,
+                    controller: _passwordController,
                   ),
 
                   //Botao Entrar
@@ -115,7 +118,20 @@ class _LoginScreenState extends State<LoginScreen> {
                           borderRadius: BorderRadius.circular(18),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () async {
+                        User? user = await loginUsingEmailPassword(
+                            email: _emailController!.text,
+                            password: _passwordController!.text,
+                            context: context);
+                        print(user);
+                        if (user != null) {
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                              builder: (context) => Home()
+                            ),
+                          );
+                        }
+                      },
                       child: const Text(
                         'Entrar',
                         style: TextStyle(

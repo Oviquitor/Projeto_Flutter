@@ -4,12 +4,14 @@ class CustomText extends StatefulWidget {
   final IconData icon;
   final String label;
   final bool isSecret;
+  final TextEditingController? controller;
 
   const CustomText(
       {super.key,
       required this.icon,
       required this.label,
-      this.isSecret = false});
+      this.isSecret = false,
+      this.controller});
 
   @override
   State<CustomText> createState() => _CustomTextState();
@@ -30,6 +32,7 @@ class _CustomTextState extends State<CustomText> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 15),
       child: TextFormField(
+        controller: widget.controller,
         obscureText: isObscure,
         decoration: InputDecoration(
           prefixIcon: Icon(widget.icon),
