@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:project/components/custom_button.dart';
 import 'package:project/components/custom_text.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -132,16 +131,20 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         onPressed: () async {
-                          User? user = await loginUsingEmailPassword(
-                              email: _emailController!.text,
-                              password: _passwordController!.text,
-                              context: context);
-                          print(user);
-                          if (user != null) {
-                            Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(builder: (context) => Home()),
-                            );
-                          }
+                          //User? user = await loginUsingEmailPassword(
+                          //    email: _emailController!.text,
+                          //    password: _passwordController!.text,
+                          //   context: context);
+                          //print(user);
+                          //if (user != null) {
+                          //  Navigator.of(context).pushReplacement(
+                          //    MaterialPageRoute(builder: (context) => Home()),
+                          //  );
+                          //}
+
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(builder: (context) => Home()),
+                          );
                         },
                         child: const Text(
                           'Entrar',
