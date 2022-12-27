@@ -36,6 +36,7 @@ class _MenuState extends State<Menu> {
             child: Column(
               children: [
                 HeaderDrawer(),
+                drawerList(),
               ],
             ),
           ),
@@ -53,6 +54,7 @@ class _MenuState extends State<Menu> {
               currentPage == DrawerSections.home ? true : false),
           menuItem(2, "Cadastros", Icons.person_outlined,
               currentPage == DrawerSections.cadastros ? true : false),
+          Divider(),
         ],
       ),
     );
@@ -63,6 +65,7 @@ class _MenuState extends State<Menu> {
       color: selected ? Colors.grey[300] : Colors.transparent,
       child: InkWell(
         onTap: () {
+          Navigator.pop(context);
           setState(() {
             if (id == 1) {
               currentPage == DrawerSections.home;
@@ -101,11 +104,5 @@ class _MenuState extends State<Menu> {
 
 enum DrawerSections {
   home,
-  contatos,
   cadastros,
-  clientes,
-  produtos,
-  eventos,
-  notas,
-  configuracoes,
 }
