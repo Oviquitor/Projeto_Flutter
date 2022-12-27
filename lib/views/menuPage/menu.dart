@@ -1,33 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:project/views/cadastrosPage/cadastrosPage.dart';
-import 'package:project/views/homePage/home.dart';
+import 'package:project/views/configPage/config.dart';
+import 'package:project/views/homePage/inicio.dart';
 import 'package:project/views/menuPage/headerDrawer.dart';
 
 class Menu extends StatefulWidget {
-  const Menu({super.key});
-
   @override
-  State<Menu> createState() => _MenuState();
+  _MenuState createState() => _MenuState();
 }
 
 class _MenuState extends State<Menu> {
-  var currentPage = DrawerSections.home;
+  var currentPage = DrawerSections.dashboard;
+
   @override
   Widget build(BuildContext context) {
     var container;
-    if (currentPage == DrawerSections.home) {
-      container = Home();
-    } else if (currentPage == DrawerSections.cadastros) {
-      container = Cadastros();
+    if (currentPage == DrawerSections.dashboard) {
+      container = Inicio();
+    } else if (currentPage == DrawerSections.contacts) {
+      container = Configuracoes();
     }
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        title: Text(""),
+        backgroundColor: Colors.green[700],
+        title: Text("Rapid Tech"),
       ),
       body: container,
       drawer: Drawer(
@@ -36,7 +31,7 @@ class _MenuState extends State<Menu> {
             child: Column(
               children: [
                 HeaderDrawer(),
-                drawerList(),
+                MyDrawerList(),
               ],
             ),
           ),
@@ -45,16 +40,30 @@ class _MenuState extends State<Menu> {
     );
   }
 
-  Widget drawerList() {
+  Widget MyDrawerList() {
     return Container(
-      padding: EdgeInsets.only(top: 10.0),
+      padding: const EdgeInsets.only(top: 10),
       child: Column(
+        // shows the list of menu drawer
         children: [
-          menuItem(1, "Inicio", Icons.home_outlined,
-              currentPage == DrawerSections.home ? true : false),
-          menuItem(2, "Cadastros", Icons.person_outlined,
-              currentPage == DrawerSections.cadastros ? true : false),
+          menuItem(1, "Dashboard", Icons.dashboard_outlined,
+              currentPage == DrawerSections.dashboard ? true : false),
+          menuItem(2, "Contacts", Icons.people_alt_outlined,
+              currentPage == DrawerSections.contacts ? true : false),
+          menuItem(3, "Events", Icons.event,
+              currentPage == DrawerSections.events ? true : false),
+          menuItem(4, "Notes", Icons.notes,
+              currentPage == DrawerSections.notes ? true : false),
           Divider(),
+          menuItem(5, "Settings", Icons.settings_outlined,
+              currentPage == DrawerSections.settings ? true : false),
+          menuItem(6, "Notifications", Icons.notifications_outlined,
+              currentPage == DrawerSections.notifications ? true : false),
+          Divider(),
+          menuItem(7, "Privacy policy", Icons.privacy_tip_outlined,
+              currentPage == DrawerSections.privacy_policy ? true : false),
+          menuItem(8, "Send feedback", Icons.feedback_outlined,
+              currentPage == DrawerSections.send_feedback ? true : false),
         ],
       ),
     );
@@ -68,9 +77,21 @@ class _MenuState extends State<Menu> {
           Navigator.pop(context);
           setState(() {
             if (id == 1) {
-              currentPage == DrawerSections.home;
+              currentPage = DrawerSections.dashboard;
             } else if (id == 2) {
-              currentPage == DrawerSections.cadastros;
+              currentPage = DrawerSections.contacts;
+            } else if (id == 3) {
+              currentPage = DrawerSections.events;
+            } else if (id == 4) {
+              currentPage = DrawerSections.notes;
+            } else if (id == 5) {
+              currentPage = DrawerSections.settings;
+            } else if (id == 6) {
+              currentPage = DrawerSections.notifications;
+            } else if (id == 7) {
+              currentPage = DrawerSections.privacy_policy;
+            } else if (id == 8) {
+              currentPage = DrawerSections.send_feedback;
             }
           });
         },
@@ -82,15 +103,16 @@ class _MenuState extends State<Menu> {
                 child: Icon(
                   icon,
                   size: 20,
-                  color: Colors.black,
+                  color: Color.fromARGB(255, 255, 0, 0),
                 ),
               ),
               Expanded(
+                flex: 3,
                 child: Text(
                   title,
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 16.0,
+                    fontSize: 16,
                   ),
                 ),
               ),
@@ -103,6 +125,12 @@ class _MenuState extends State<Menu> {
 }
 
 enum DrawerSections {
-  home,
-  cadastros,
+  dashboard,
+  contacts,
+  events,
+  notes,
+  settings,
+  notifications,
+  privacy_policy,
+  send_feedback,
 }

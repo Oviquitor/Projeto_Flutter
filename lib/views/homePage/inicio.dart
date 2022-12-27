@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-class Home extends StatefulWidget {
-  const Home({super.key});
+class Inicio extends StatefulWidget {
+  const Inicio({super.key});
 
   @override
-  State<Home> createState() => _HomeState();
+  State<Inicio> createState() => _InicioState();
 }
 
-class _HomeState extends State<Home> {
+class _InicioState extends State<Inicio> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        children: [Text("home")],
+        children: [Text("Inicio")],
       ),
     );
   }
