@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project/components/custom_text.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:project/views/home.dart';
+import 'package:project/views/menuPage/menu.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -143,7 +143,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           //}
 
                           Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(builder: (context) => Home()),
+                            MaterialPageRoute(builder: (context) => Menu()),
                           );
                         },
                         child: const Text(
