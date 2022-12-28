@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:project/views/cadastrosPage/cadastros.dart';
 import 'package:project/views/configPage/config.dart';
 import 'package:project/views/inicioPage/inicio.dart';
+import 'package:project/views/inicioPage/inicio2.dart';
 import 'package:project/views/menuPage/headerDrawer.dart';
 
 class Menu extends StatefulWidget {
@@ -9,15 +11,15 @@ class Menu extends StatefulWidget {
 }
 
 class _MenuState extends State<Menu> {
-  var currentPage = DrawerSections.dashboard;
+  var currentPage = DrawerSections.inicio;
 
   @override
   Widget build(BuildContext context) {
     var container;
-    if (currentPage == DrawerSections.dashboard) {
-      container = Inicio();
-    } else if (currentPage == DrawerSections.contacts) {
-      container = Configuracoes();
+    if (currentPage == DrawerSections.inicio) {
+      container = Inicio2();
+    } else if (currentPage == DrawerSections.cadastros) {
+      container = Cadastros();
     }
     return Scaffold(
       appBar: AppBar(
@@ -47,10 +49,10 @@ class _MenuState extends State<Menu> {
       child: Column(
         // shows the list of menu drawer
         children: [
-          menuItem(1, "Dashboard", Icons.dashboard_outlined,
-              currentPage == DrawerSections.dashboard ? true : false),
-          menuItem(2, "Contacts", Icons.people_alt_outlined,
-              currentPage == DrawerSections.contacts ? true : false),
+          menuItem(1, "Inicio", Icons.dashboard_outlined,
+              currentPage == DrawerSections.inicio ? true : false),
+          menuItem(2, "Cadastros", Icons.content_paste,
+              currentPage == DrawerSections.cadastros ? true : false),
         ],
       ),
     );
@@ -64,9 +66,9 @@ class _MenuState extends State<Menu> {
           Navigator.pop(context);
           setState(() {
             if (id == 1) {
-              currentPage = DrawerSections.dashboard;
+              currentPage = DrawerSections.inicio;
             } else if (id == 2) {
-              currentPage = DrawerSections.contacts;
+              currentPage = DrawerSections.cadastros;
             }
           });
         },
@@ -78,7 +80,7 @@ class _MenuState extends State<Menu> {
                 child: Icon(
                   icon,
                   size: 20,
-                  color: Color.fromARGB(255, 255, 0, 0),
+                  color: Colors.black,
                 ),
               ),
               Expanded(
@@ -100,8 +102,8 @@ class _MenuState extends State<Menu> {
 }
 
 enum DrawerSections {
-  dashboard,
-  contacts,
+  inicio,
+  cadastros,
   events,
   notes,
   settings,

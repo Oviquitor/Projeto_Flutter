@@ -38,10 +38,11 @@ class _InicioState extends State<Inicio> {
           itemBuilder: (context, index) => InkWell(
             onTap: () {
               setState(() {
+                
                 currentIndex = index;
                 //HapticFeedback.lightImpact();
                 if (currentIndex == 2) {
-                  Configuracoes();
+                   Configuracoes();
                 }
               });
             },

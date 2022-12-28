@@ -13,8 +13,11 @@ class _CadastrosState extends State<Cadastros> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [Text("data")],
+      body: PageView(
+        //controller: pageController,
+        children: [
+          Cadastros(),
+        ],
       ),
     );
   }

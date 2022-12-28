@@ -51,7 +51,7 @@ ThemeData appTheme() {
     ),
 
     scaffoldBackgroundColor: Color.fromARGB(255, 255, 247, 247),
-    splashColor: Colors.transparent, //tira a animação do botao
-    highlightColor: Colors.transparent,
+    //splashColor: Colors.transparent, //tira a animação do botao
+    //highlightColor: Colors.transparent,
   );
 }
