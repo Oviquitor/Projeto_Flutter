@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:project/views/configPage/config.dart';
 
 class Inicio extends StatefulWidget {
   const Inicio({super.key});
@@ -39,6 +40,9 @@ class _InicioState extends State<Inicio> {
               setState(() {
                 currentIndex = index;
                 //HapticFeedback.lightImpact();
+                if (currentIndex == 2) {
+                  Configuracoes();
+                }
               });
             },
             splashColor: Colors.transparent,
@@ -91,7 +95,7 @@ class _InicioState extends State<Inicio> {
                                   ? '${listOfStrings[index]}'
                                   : '',
                               style: TextStyle(
-                                color: Colors.blueAccent,
+                                color: Colors.black,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 15,
                               ),
