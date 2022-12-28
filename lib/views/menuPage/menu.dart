@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project/views/configPage/config.dart';
-import 'package:project/views/homePage/inicio.dart';
+import 'package:project/views/inicioPage/inicio.dart';
 import 'package:project/views/menuPage/headerDrawer.dart';
 
 class Menu extends StatefulWidget {
@@ -22,7 +22,8 @@ class _MenuState extends State<Menu> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green[700],
-        title: Text("Rapid Tech"),
+        title: Text("Fartner Mobile"),
+        centerTitle: true,
       ),
       body: container,
       drawer: Drawer(
@@ -50,20 +51,6 @@ class _MenuState extends State<Menu> {
               currentPage == DrawerSections.dashboard ? true : false),
           menuItem(2, "Contacts", Icons.people_alt_outlined,
               currentPage == DrawerSections.contacts ? true : false),
-          menuItem(3, "Events", Icons.event,
-              currentPage == DrawerSections.events ? true : false),
-          menuItem(4, "Notes", Icons.notes,
-              currentPage == DrawerSections.notes ? true : false),
-          Divider(),
-          menuItem(5, "Settings", Icons.settings_outlined,
-              currentPage == DrawerSections.settings ? true : false),
-          menuItem(6, "Notifications", Icons.notifications_outlined,
-              currentPage == DrawerSections.notifications ? true : false),
-          Divider(),
-          menuItem(7, "Privacy policy", Icons.privacy_tip_outlined,
-              currentPage == DrawerSections.privacy_policy ? true : false),
-          menuItem(8, "Send feedback", Icons.feedback_outlined,
-              currentPage == DrawerSections.send_feedback ? true : false),
         ],
       ),
     );
@@ -80,18 +67,6 @@ class _MenuState extends State<Menu> {
               currentPage = DrawerSections.dashboard;
             } else if (id == 2) {
               currentPage = DrawerSections.contacts;
-            } else if (id == 3) {
-              currentPage = DrawerSections.events;
-            } else if (id == 4) {
-              currentPage = DrawerSections.notes;
-            } else if (id == 5) {
-              currentPage = DrawerSections.settings;
-            } else if (id == 6) {
-              currentPage = DrawerSections.notifications;
-            } else if (id == 7) {
-              currentPage = DrawerSections.privacy_policy;
-            } else if (id == 8) {
-              currentPage = DrawerSections.send_feedback;
             }
           });
         },

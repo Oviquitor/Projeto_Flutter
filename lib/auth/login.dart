@@ -57,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
           email: email, password: password);
       user = userCredential.user;
     } on FirebaseAuthException catch (e) {
-      if (e.code == "user nao encontrado") {
+      if (e.code == "Usuario nao encontrado") {
         print("nao foi encontrado usuario");
       }
     }
