@@ -14,7 +14,13 @@ class _ProdutosState extends State<Produtos> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Produtos"),
+        backgroundColor: Colors.white,
+        title: Text(
+          "Produtos",
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
       ),
     );
   }

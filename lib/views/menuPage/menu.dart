@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project/views/cadastrosPage/cadastros.dart';
+import 'package:project/views/cadastrosPage/cadastrosMenu.dart';
 import 'package:project/views/configPage/config.dart';
 import 'package:project/views/inicioPage/inicio.dart';
 import 'package:project/views/inicioPage/inicio2.dart';

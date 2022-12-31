@@ -8,9 +8,8 @@ class Configuracoes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [Text("config")],
-      ),
+      appBar: AppBar(),
+      body: Center(),
     );
   }
 }

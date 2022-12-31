@@ -73,12 +73,12 @@ class _LoginScreenState extends State<LoginScreen> {
           Expanded(
             child: Container(
               //color: Colors.green,
-              //width: 300,
-              //height: 300,
+              width: 300,
+              height: 300,
               //formas de definir o tamanho e ficar reponsivo
               //padding: const EdgeInsets.all(100),
-              width: MediaQuery.of(context).size.width * 0.7,
-              height: MediaQuery.of(context).size.height * 0.3,
+              //width: MediaQuery.of(context).size.width * 0.7,
+              //height: MediaQuery.of(context).size.height * 0.3,
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage("assets/images/OutSet2.png"),
