@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-class Inicio2 extends StatelessWidget {
-  const Inicio2({super.key});
+class Home2 extends StatelessWidget {
+  const Home2({super.key});
 
   @override
   Widget build(BuildContext context) {

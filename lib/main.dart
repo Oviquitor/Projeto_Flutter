@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project/auth/inicio.dart';
 import 'package:project/auth/login.dart';
 import 'package:project/themes/thema.dart';
 
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: appTheme(),
-      home: const Login(),
+      home: const Inicio(),
     );
   }
 }

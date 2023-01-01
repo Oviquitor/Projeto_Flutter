@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:project/views/cadastrosPage/cadastrosMenu.dart';
 import 'package:project/views/configPage/config.dart';
-import 'package:project/views/inicioPage/inicio.dart';
-import 'package:project/views/inicioPage/inicio2.dart';
+import 'package:project/views/inicioPage/home.dart';
+import 'package:project/views/inicioPage/home2.dart';
 import 'package:project/views/menuPage/headerDrawer.dart';
 
 class Menu extends StatefulWidget {
@@ -17,7 +17,7 @@ class _MenuState extends State<Menu> {
   Widget build(BuildContext context) {
     var container;
     if (currentPage == DrawerSections.inicio) {
-      container = Inicio2();
+      container = Home2();
     } else if (currentPage == DrawerSections.cadastros) {
       container = Cadastros();
     }

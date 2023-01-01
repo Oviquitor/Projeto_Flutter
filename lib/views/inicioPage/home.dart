@@ -4,14 +4,14 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:project/views/configPage/config.dart';
 
-class Inicio extends StatefulWidget {
-  const Inicio({super.key});
+class Home extends StatefulWidget {
+  const Home({super.key});
 
   @override
-  State<Inicio> createState() => _InicioState();
+  State<Home> createState() => _HomeState();
 }
 
-class _InicioState extends State<Inicio> {
+class _HomeState extends State<Home> {
   var currentIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -38,11 +38,10 @@ class _InicioState extends State<Inicio> {
           itemBuilder: (context, index) => InkWell(
             onTap: () {
               setState(() {
-                
                 currentIndex = index;
                 //HapticFeedback.lightImpact();
                 if (currentIndex == 2) {
-                   Configuracoes();
+                  Configuracoes();
                 }
               });
             },

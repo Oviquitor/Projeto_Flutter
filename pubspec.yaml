@@ -49,6 +49,7 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   firebase_core: ^2.4.0
   firebase_auth: ^4.2.1
+  
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -67,6 +68,7 @@ flutter:
     - assets/images/google.png
     - assets/images/OutSet2.png
     - assets/images/profile.jpg
+    - assets/images/imagem.jpg
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
 
