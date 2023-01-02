@@ -67,156 +67,69 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green,
       body: Column(
         children: [
-          Expanded(
-            child: Container(
-              //color: Colors.green,
-              //width: 300,
-              //height: 300,
-              //formas de definir o tamanho e ficar reponsivo
-              //padding: const EdgeInsets.all(100),
-              width: MediaQuery.of(context).size.width * 0.7,
-              height: MediaQuery.of(context).size.height * 0.2,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/images/OutSet2.png"),
-                  //fit: BoxFit.cover, --- ajusta a imagem nas condiçoes proposta
-                ),
-              ),
+          Container(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 32,
             ),
-          ),
-          SingleChildScrollView(
-            child: Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 32,
-                vertical: 40,
-              ),
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(45),
+            //Texto Custom
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 400),
                 ),
-              ),
+                //Email
+                CustomText(
+                  icon: Icons.email,
+                  label: 'Email',
+                  controller: _emailController,
+                ),
 
-              //Texto Custom
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  //Email
-                  CustomText(
-                    icon: Icons.email,
-                    label: 'Email',
-                    controller: _emailController,
-                  ),
+                //Senha
+                CustomText(
+                  icon: Icons.lock,
+                  label: 'Senha',
+                  isSecret: true,
+                  controller: _passwordController,
+                ),
 
-                  //Senha
-                  CustomText(
-                    icon: Icons.lock,
-                    label: 'Senha',
-                    isSecret: true,
-                    controller: _passwordController,
-                  ),
-
-                  //Botao Entrar
-                  SizedBox(
-                    height: 50,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.black,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18),
-                        ),
+                //Botao Entrar
+                SizedBox(
+                  height: 50,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.black,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18),
                       ),
-                      onPressed: () async {
-                        //User? user = await loginUsingEmailPassword(
-                        //    email: _emailController!.text,
-                        //    password: _passwordController!.text,
-                        //   context: context);
-                        //print(user);
-                        //if (user != null) {
-                        //  Navigator.of(context).pushReplacement(
-                        //    MaterialPageRoute(builder: (context) => Home()),
-                        //  );
-                        //}
+                    ),
+                    onPressed: () async {
+                      //User? user = await loginUsingEmailPassword(
+                      //    email: _emailController!.text,
+                      //    password: _passwordController!.text,
+                      //   context: context);
+                      //print(user);
+                      //if (user != null) {
+                      //  Navigator.of(context).pushReplacement(
+                      //    MaterialPageRoute(builder: (context) => Home()),
+                      //  );
+                      //}
 
-                        Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(builder: (context) => Menu()),
-                        );
-                      },
-                      child: const Text(
-                        'Entrar',
-                        style: TextStyle(
-                          fontSize: 18,
-                        ),
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => Menu()),
+                      );
+                    },
+                    child: const Text(
+                      'Entrar',
+                      style: TextStyle(
+                        fontSize: 18,
                       ),
                     ),
                   ),
-
-                  //Esqueceu a Senha
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        'Esqueceu a senha?',
-                        style: TextStyle(
-                          color: Colors.red,
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  //Divisor
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 10),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Divider(
-                            color: Colors.grey.withAlpha(90),
-                            thickness: 2,
-                          ),
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 15),
-                          child: Text('Ou'),
-                        ),
-                        Expanded(
-                          child: Divider(
-                            color: Colors.grey.withAlpha(90),
-                            thickness: 2,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-
-                  //Botao Novo usuario
-                  SizedBox(
-                    height: 50,
-                    child: OutlinedButton(
-                      style: OutlinedButton.styleFrom(
-                        side: const BorderSide(
-                          width: 2,
-                          color: Colors.black,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18),
-                        ),
-                      ),
-                      onPressed: () {},
-                      child: const Text(
-                        'Criar conta',
-                        style: TextStyle(
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],

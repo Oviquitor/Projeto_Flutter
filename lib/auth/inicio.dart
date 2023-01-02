@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:project/auth/login.dart';
 
 class Inicio extends StatefulWidget {
   const Inicio({super.key});
@@ -40,6 +41,7 @@ class _InicioState extends State<Inicio> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+                //Entrar
                 SizedBox(
                   height: 50,
                   child: ElevatedButton(
@@ -55,12 +57,17 @@ class _InicioState extends State<Inicio> {
                         fontSize: 18,
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => Login()),
+                      );
+                    },
                   ),
                 ),
                 const Padding(
                   padding: EdgeInsets.all(5),
                 ),
+                //Criar Conta
                 SizedBox(
                   height: 45,
                   child: OutlinedButton(
@@ -83,6 +90,7 @@ class _InicioState extends State<Inicio> {
                     onPressed: () {},
                   ),
                 ),
+                //Botoes redondo
                 Padding(
                   padding: const EdgeInsets.only(top: 15),
                   child: Row(
@@ -107,10 +115,15 @@ class _InicioState extends State<Inicio> {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  padding: EdgeInsets.symmetric(horizontal: 50),
                   child: Row(
                     children: [
                       IconButton(
+                        style: ButtonStyle(
+                          minimumSize: MaterialStateProperty.all(
+                            Size(5, 5),
+                          ),
+                        ),
                         onPressed: () {},
                         icon: Image.asset("assets/images/google.png"),
                       ),
