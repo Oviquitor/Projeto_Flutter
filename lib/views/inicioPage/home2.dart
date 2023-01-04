@@ -17,7 +17,8 @@ class Home2 extends StatelessWidget {
       ),
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
-        color: Theme.of(context).colorScheme.primary,
+        //color: Theme.of(context).colorScheme.primary,
+        color: Colors.black87,
         child: IconTheme(
           data: IconThemeData(color: Theme.of(context).colorScheme.onPrimary),
           child: Padding(

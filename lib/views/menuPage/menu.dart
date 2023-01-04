@@ -23,7 +23,7 @@ class _MenuState extends State<Menu> {
     }
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green[700],
+        backgroundColor: Colors.black87,
         title: Text("Fartner Mobile"),
         centerTitle: true,
       ),

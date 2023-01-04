@@ -45,12 +45,12 @@ ThemeData appTheme() {
     ),
 
     colorScheme: ColorScheme.fromSwatch(
-      primarySwatch: Colors.pink,
+      primarySwatch: Colors.blue,
     ).copyWith(
-      secondary: Color.fromARGB(255, 0, 0, 0),
+      secondary: Colors.orange,
     ),
 
-    scaffoldBackgroundColor: Color.fromARGB(255, 255, 247, 247),
+    scaffoldBackgroundColor: Colors.white,
     //splashColor: Colors.transparent, //tira a animação do botao
     //highlightColor: Colors.transparent,
   );
