@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:project/auth/login.dart';
+import 'package:project/main.dart';
 
 class Inicio extends StatefulWidget {
   const Inicio({super.key});
@@ -59,7 +60,7 @@ class _InicioState extends State<Inicio> {
                     ),
                     onPressed: () {
                       Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => Login()),
+                        MaterialPageRoute(builder: (context) => LoginScreen()),
                       );
                     },
                   ),

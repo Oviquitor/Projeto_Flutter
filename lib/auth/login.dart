@@ -4,37 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:project/views/menuPage/menu.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
-
-  @override
-  State<Login> createState() => _LoginState();
-}
-
-class _LoginState extends State<Login> {
-  //initializaçao do firebase
-  Future<FirebaseApp> _initializeFirebase() async {
-    FirebaseApp firebaseApp = await Firebase.initializeApp();
-    return firebaseApp;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: FutureBuilder(
-          future: _initializeFirebase(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
-              return LoginScreen();
-            }
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }),
-    );
-  }
-}
-
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -113,7 +82,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       //print(user);
                       //if (user != null) {
                       //  Navigator.of(context).pushReplacement(
-                      //    MaterialPageRoute(builder: (context) => Home()),
+                      //    MaterialPageRoute(builder: (context) => Menu()),
                       //  );
                       //}
 
