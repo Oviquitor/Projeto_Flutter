@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:project/auth/login.dart';
+import 'package:project/views/loginPage/login.dart';
 import 'package:project/main.dart';
 
 class Inicio extends StatefulWidget {
