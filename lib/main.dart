@@ -51,3 +51,30 @@ class _FireBaseState extends State<FireBase> {
     );
   }
 }
+
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
+  @override
+  void initState() {
+    //super.initState();
+    //Future.delayed(Duration(seconds: 3)).then((value) => null)
+  }
+
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("assets/images/inicial.png"),
+          fit: BoxFit.cover,
+        ),
+      ),
+      //child: Center(child: ,),
+    );
+  }
+}
