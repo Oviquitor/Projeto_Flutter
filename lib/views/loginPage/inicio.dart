@@ -23,17 +23,17 @@ class _InicioState extends State<Inicio> {
               child: Container(
                 //padding: EdgeInsets.all(20),
                 width: 250,
-                height: 300,
+                height: 350,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage("assets/images/OutSet2.png"),
+                    image: AssetImage("assets/images/FartnerMobile.png"),
                   ),
                 ),
               ),
             ),
           ),
           Container(
-            padding: EdgeInsets.only(top: 170),
+            padding: EdgeInsets.only(top: 130),
             width: 340,
             //padding: const EdgeInsets.symmetric(
             //  horizontal: 40,
@@ -126,7 +126,7 @@ class _InicioState extends State<Inicio> {
                           ),
                         ),
                         onPressed: () {},
-                        icon: Image.asset("assets/images/google.png"),
+                        icon: Image.asset("assets/images/FartnerMobile.png"),
                       ),
                     ],
                   ),

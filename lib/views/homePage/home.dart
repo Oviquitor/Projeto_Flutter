@@ -3,6 +3,8 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:project/views/configPage/config.dart';
+import 'package:project/views/homePage/dashboard.dart';
+import 'package:project/views/homePage/vendas.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -127,6 +129,13 @@ class _HomeState extends State<Home> {
             ),
           ),
         ),
+      ),
+      body: IndexedStack(
+        index: currentIndex,
+        children: [
+          DashBoard(),
+          Vendas(),
+        ],
       ),
     );
   }
