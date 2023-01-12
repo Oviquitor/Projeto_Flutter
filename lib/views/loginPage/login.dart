@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project/components/custom_text.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:project/views/loginPage/loginXX.dart';
 import 'package:project/views/menuPage/menu.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -12,97 +13,105 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final TextEditingController? _emailController = TextEditingController();
-  final TextEditingController? _passwordController = TextEditingController();
-  //função login
-  static Future<User?> loginUsingEmailPassword(
-      {required String email,
-      required String password,
-      required BuildContext context}) async {
-    FirebaseAuth auth = FirebaseAuth.instance;
-    User? user;
-    try {
-      UserCredential userCredential = await auth.signInWithEmailAndPassword(
-          email: email, password: password);
-      user = userCredential.user;
-    } on FirebaseAuthException catch (e) {
-      if (e.code == "Usuario nao encontrado") {
-        print("nao foi encontrado usuario");
-      }
-    }
-    return user;
-  }
+  final firebaseAuth = FirebaseAuth.instance;
+  final _emailController = TextEditingController();
+  final _senhaController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Container(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 32,
-            ),
-            //Texto Custom
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(top: 400),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 32,
                 ),
-                //Email
-                CustomText(
-                  icon: Icons.email,
-                  label: 'Email',
-                  controller: _emailController,
-                ),
+                //Texto Custom
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(top: 400),
+                    ),
+                    //Email
+                    CustomText(
+                      icon: Icons.email,
+                      label: 'Email',
+                      controller: _emailController,
+                    ),
 
-                //Senha
-                CustomText(
-                  icon: Icons.lock,
-                  label: 'Senha',
-                  isSecret: true,
-                  controller: _passwordController,
-                ),
+                    //Senha
+                    CustomText(
+                      icon: Icons.lock,
+                      label: 'Senha',
+                      isSecret: true,
+                      controller: _senhaController,
+                    ),
 
-                //Botao Entrar
-                SizedBox(
-                  height: 50,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18),
+                    //Botao Entrar
+                    SizedBox(
+                      height: 50,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.black,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18),
+                          ),
+                        ),
+                        onPressed: () {
+                          login();
+                        },
+                        child: const Text(
+                          'Entrar',
+                          style: TextStyle(
+                            fontSize: 18,
+                          ),
+                        ),
                       ),
                     ),
-                    onPressed: () async {
-                      //User? user = await loginUsingEmailPassword(
-                      //    email: _emailController!.text,
-                      //    password: _passwordController!.text,
-                      //   context: context);
-                      //print(user);
-                      //if (user != null) {
-                      //  Navigator.of(context).pushReplacement(
-                      //    MaterialPageRoute(builder: (context) => Menu()),
-                      //  );
-                      //}
-
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => Menu()),
-                      );
-                    },
-                    child: const Text(
-                      'Entrar',
-                      style: TextStyle(
-                        fontSize: 18,
-                      ),
-                    ),
-                  ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
+  }
+
+  login() async {
+    try {
+      UserCredential usuarioCredencial =
+          await firebaseAuth.signInWithEmailAndPassword(
+        email: _emailController.text,
+        password: _senhaController.text,
+      );
+      if (usuarioCredencial != null) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Menu(),
+          ),
+        );
+      }
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Usuario nao encontrado'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      } else if (e.code == 'wrong-password') {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Senha invalida'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
   }
 }

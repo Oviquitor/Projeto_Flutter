@@ -23,9 +23,17 @@ class _MenuState extends State<Menu> {
     }
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black87,
-        title: Text("Fartner Mobile"),
+        backgroundColor: Colors.transparent,
+        title: Text(
+          "Fartner Mobile",
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
+        iconTheme: IconThemeData(color: Colors.black),
         centerTitle: true,
+        bottomOpacity: 0.0,
+        elevation: 0.0,
       ),
       body: container,
       drawer: Drawer(
