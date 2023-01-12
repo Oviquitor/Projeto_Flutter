@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:project/views/loginPage/login.dart';
 import 'package:project/main.dart';
+import 'package:project/views/loginPage/novoUsuario.dart';
 
 class Inicio extends StatefulWidget {
   const Inicio({super.key});
@@ -88,7 +89,13 @@ class _InicioState extends State<Inicio> {
                         color: Colors.black,
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => NovoUsuario(),
+                        ),
+                      );
+                    },
                   ),
                 ),
                 //Botoes redondo
