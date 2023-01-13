@@ -60,9 +60,18 @@ dev_dependencies:
   # rules and activating additional ones.
 
 flutter_native_splash:
+  color: "#3F51B5"
   image: "assets/images/FartnerMobile.png"
-  color: "#f9f9f9"
-  image_dark: "assets/images/FartnerMobile.png"
+  android: true
+  ios: true
+
+flutter_icons:
+  image_path: "assets/images/FartnerMobile.png"
+  ios: true
+  remove_alpha_ios: true
+  android: "launcher_icon"
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: "assets/images/FartnerMobile.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
