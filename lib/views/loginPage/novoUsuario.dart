@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -39,7 +37,7 @@ class _NovoUsuarioState extends State<NovoUsuario> {
                 CustomText(
                   icon: Icons.person,
                   label: 'Nome',
-                  controller: _emailController,
+                  controller: _nomeController,
                 ),
                 //Email
                 CustomText(
