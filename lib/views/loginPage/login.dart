@@ -62,6 +62,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         onPressed: () {
                           login();
+                          Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) => Menu()),
+                              (Route<dynamic> route) => false);
                         },
                         child: const Text(
                           'Entrar',
