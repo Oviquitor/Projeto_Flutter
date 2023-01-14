@@ -1,7 +1,9 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:project/components/custom_text.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:project/views/loginPage/esqueceuSenha.dart';
 import 'package:project/views/loginPage/loginXX.dart';
 import 'package:project/views/menuPage/menu.dart';
 
@@ -32,8 +34,56 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
+                    Padding(padding: EdgeInsets.only(top: 150)),
+                    Container(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            child: Text.rich(
+                              TextSpan(
+                                style: TextStyle(
+                                  fontSize: 40,
+                                ),
+                                children: [
+                                  TextSpan(
+                                    text: 'Ola, ',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 48,
+                            width: 200,
+                            child: DefaultTextStyle(
+                              style: TextStyle(
+                                fontSize: 40,
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              child: AnimatedTextKit(
+                                pause: Duration.zero,
+                                repeatForever: true,
+                                animatedTexts: [
+                                  FadeAnimatedText('Bem Vindo'),
+                                  FadeAnimatedText('Welcome'),
+                                  FadeAnimatedText('歡迎'),
+                                  FadeAnimatedText('Bienvenido'),
+                                  FadeAnimatedText('أهلا بك'),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                     Padding(
-                      padding: EdgeInsets.only(top: 400),
+                      padding: EdgeInsets.only(top: 200),
                     ),
                     //Email
                     CustomText(
@@ -62,17 +112,28 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         onPressed: () {
                           login();
-                          Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) => Menu()),
-                              (Route<dynamic> route) => false);
                         },
                         child: const Text(
                           'Entrar',
                           style: TextStyle(
                             fontSize: 18,
                           ),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: ((context) => RedefinirSenha()),
+                            ),
+                          );
+                        },
+                        child: Text(
+                          'Esqueceu a senha?',
+                          style: TextStyle(color: Colors.red),
                         ),
                       ),
                     ),
@@ -94,12 +155,10 @@ class _LoginScreenState extends State<LoginScreen> {
         password: _senhaController.text,
       );
       if (usuarioCredencial != null) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => Menu(),
-          ),
-        );
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (BuildContext context) => Menu()),
+            (Route<dynamic> route) => false);
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {

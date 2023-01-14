@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:project/components/custom_text.dart';
+import 'package:project/utils/usuarioFirebase.dart';
 import 'package:project/views/loginPage/inicio.dart';
 
 class NovoUsuario extends StatefulWidget {
@@ -16,6 +17,7 @@ class _NovoUsuarioState extends State<NovoUsuario> {
   final _nomeController = TextEditingController();
   final _emailController = TextEditingController();
   final _senhaController = TextEditingController();
+  final _confirmarSenhaController = TextEditingController();
   final firebaseAuth = FirebaseAuth.instance;
 
   @override
@@ -54,10 +56,19 @@ class _NovoUsuarioState extends State<NovoUsuario> {
                   controller: _senhaController,
                 ),
 
+                CustomText(
+                  icon: Icons.lock,
+                  label: 'Confirmar senha',
+                  isSecret: true,
+                  controller: _confirmarSenhaController,
+                ),
+
                 SizedBox(
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      cadastrar();
+                    },
                     child: Text(
                       'Criar usuario',
                       style: TextStyle(fontSize: 18),
@@ -65,9 +76,7 @@ class _NovoUsuarioState extends State<NovoUsuario> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.black,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(
-                          10,
-                        ),
+                        borderRadius: BorderRadius.circular(10),
                       ),
                     ),
                   ),
@@ -87,7 +96,8 @@ class _NovoUsuarioState extends State<NovoUsuario> {
         email: _emailController.text,
         password: _senhaController.text,
       );
-      if (cadastrarCredencial != null) {
+      if (cadastrarCredencial != null &&
+          _senhaController.text == _confirmarSenhaController.text) {
         cadastrarCredencial.user!.updateDisplayName(_nomeController.text);
         Navigator.pushReplacement(
           context,
@@ -95,12 +105,19 @@ class _NovoUsuarioState extends State<NovoUsuario> {
             builder: (context) => Inicio(),
           ),
         );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Senhas nao confere'),
+          ),
+        );
       }
+      ;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'week-password') {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Seha fraca'),
+            content: Text('Informe no minimo 6 caracteres'),
           ),
         );
       } else if (e.code == 'email-already-in-use') {

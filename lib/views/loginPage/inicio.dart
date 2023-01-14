@@ -24,7 +24,7 @@ class _InicioState extends State<Inicio> {
               child: Container(
                 //padding: EdgeInsets.all(20),
                 width: 250,
-                height: 350,
+                height: 380,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage("assets/images/FartnerMobile.png"),
@@ -34,7 +34,7 @@ class _InicioState extends State<Inicio> {
             ),
           ),
           Container(
-            padding: EdgeInsets.only(top: 130),
+            padding: EdgeInsets.only(top: 100),
             width: 340,
             //padding: const EdgeInsets.symmetric(
             //  horizontal: 40,
@@ -123,17 +123,23 @@ class _InicioState extends State<Inicio> {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 50),
+                  height: 100,
                   child: Row(
                     children: [
+                      Padding(padding: EdgeInsets.only(left: 50)),
                       IconButton(
-                        style: ButtonStyle(
-                          minimumSize: MaterialStateProperty.all(
-                            Size(5, 5),
-                          ),
-                        ),
                         onPressed: () {},
-                        icon: Image.asset("assets/images/FartnerMobile.png"),
+                        icon: Image.asset("assets/images/Google.png"),
+                      ),
+                      Padding(padding: EdgeInsets.only(left: 50)),
+                      IconButton(
+                        onPressed: () {},
+                        icon: Image.asset("assets/images/Facebook.png"),
+                      ),
+                      Padding(padding: EdgeInsets.only(left: 50)),
+                      IconButton(
+                        onPressed: () {},
+                        icon: Image.asset("assets/images/Linkedin.png"),
                       ),
                     ],
                   ),

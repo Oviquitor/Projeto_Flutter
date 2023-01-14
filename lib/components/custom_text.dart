@@ -33,6 +33,7 @@ class _CustomTextState extends State<CustomText> {
       padding: const EdgeInsets.only(bottom: 15),
       child: TextFormField(
         controller: widget.controller,
+        textInputAction: TextInputAction.next,
         obscureText: isObscure,
         decoration: InputDecoration(
           prefixIcon: Icon(widget.icon),
