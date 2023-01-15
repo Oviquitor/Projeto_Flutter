@@ -48,7 +48,9 @@ class _CadastrosState extends State<Cadastros> {
           onPressed: () {
             if (paginaAtual == 0) {
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => ClientesScreen()),
+                MaterialPageRoute(
+                    builder: (context) =>
+                        ClientesScreen(action: ActionScreenClientes.novo)),
               );
             } else {
               Navigator.of(context).push(
@@ -63,9 +65,7 @@ class _CadastrosState extends State<Cadastros> {
           currentIndex: paginaAtual,
           items: [
             BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Clientes',
-            ),
+                icon: Icon(Icons.person), label: 'Clientes'),
             BottomNavigationBarItem(
               icon: Icon(Icons.production_quantity_limits),
               label: 'Produtos',
