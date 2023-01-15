@@ -25,64 +25,98 @@ class _NovoUsuarioState extends State<NovoUsuario> {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Container(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 32,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(top: 350),
-                ),
-                //nome
-                CustomText(
-                  icon: Icons.person,
-                  label: 'Nome',
-                  controller: _nomeController,
-                ),
-                //Email
-                CustomText(
-                  icon: Icons.email,
-                  label: 'Email',
-                  controller: _emailController,
-                ),
-
-                //Senha
-                CustomText(
-                  icon: Icons.lock,
-                  label: 'Senha',
-                  isSecret: true,
-                  controller: _senhaController,
-                ),
-
-                CustomText(
-                  icon: Icons.lock,
-                  label: 'Confirmar senha',
-                  isSecret: true,
-                  controller: _confirmarSenhaController,
-                ),
-
-                SizedBox(
-                  height: 50,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      cadastrar();
-                    },
-                    child: Text(
-                      'Criar usuario',
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
+          child: Column(
+            children: [
+              Container(
+                padding: EdgeInsets.only(top: 160),
+                width: 320,
+                child: SizedBox(
+                  child: Text.rich(
+                    TextSpan(
+                      style: TextStyle(
+                        fontSize: 35,
                       ),
+                      children: [
+                        TextSpan(
+                          text: 'Novo usuário',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 32,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Padding(padding: EdgeInsets.only(top: 120)),
+                    //nome
+                    CustomText(
+                      icon: Icons.person,
+                      label: 'Nome',
+                      controller: _nomeController,
+                    ),
+                    //Email
+                    CustomText(
+                      icon: Icons.email,
+                      label: 'Email',
+                      controller: _emailController,
+                    ),
+
+                    //Senha
+                    CustomText(
+                      icon: Icons.lock,
+                      label: 'Senha',
+                      isSecret: true,
+                      controller: _senhaController,
+                    ),
+
+                    CustomText(
+                      icon: Icons.lock,
+                      label: 'Confirmar senha',
+                      isSecret: true,
+                      controller: _confirmarSenhaController,
+                    ),
+
+                    SizedBox(
+                      height: 50,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          if (_emailController.text.isEmpty ||
+                              _senhaController.text.isEmpty ||
+                              _confirmarSenhaController.text.isEmpty) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text('Preencha todos os campos'),
+                              ),
+                            );
+                          } else {
+                            cadastrar();
+                          }
+                        },
+                        child: Text(
+                          'Criar usuario',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.black,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
       ),
@@ -118,12 +152,14 @@ class _NovoUsuarioState extends State<NovoUsuario> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('Informe no minimo 6 caracteres'),
+            backgroundColor: Colors.red,
           ),
         );
       } else if (e.code == 'email-already-in-use') {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('Email ja foi usado'),
+            backgroundColor: Colors.red,
           ),
         );
       }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project/firebase_options.dart';
 import 'package:project/views/loginPage/inicio.dart';
 import 'package:project/views/loginPage/login.dart';
 import 'package:project/themes/thema.dart';

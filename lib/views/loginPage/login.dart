@@ -111,7 +111,23 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         onPressed: () {
-                          login();
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) => Menu()),
+                            (Route<dynamic> route) => false,
+                          );
+                          /*if (_emailController.text.isEmpty ||
+                              _senhaController.text.isEmpty) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Informe o email e a senha'),
+                                backgroundColor': Colors.red,
+                              ),
+                            );
+                          } else {
+                            login();
+                          }*/
                         },
                         child: const Text(
                           'Entrar',
@@ -156,9 +172,10 @@ class _LoginScreenState extends State<LoginScreen> {
       );
       if (usuarioCredencial != null) {
         Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(builder: (BuildContext context) => Menu()),
-            (Route<dynamic> route) => false);
+          context,
+          MaterialPageRoute(builder: (BuildContext context) => Menu()),
+          (Route<dynamic> route) => false,
+        );
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
