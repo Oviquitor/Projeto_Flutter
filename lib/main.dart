@@ -7,6 +7,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() {
+  //WidgetsFlutterBinding.ensureInitialized();
+  //await Firebase.initializeApp(
+  // options: DefaultFirebaseOptions.currentPlatform,
+  //);
   runApp(const MyApp());
 }
 
@@ -32,7 +36,11 @@ class FireBase extends StatefulWidget {
 
 class _FireBaseState extends State<FireBase> {
   Future<FirebaseApp> _initializeFirebase() async {
-    FirebaseApp firebaseApp = await Firebase.initializeApp();
+    WidgetsFlutterBinding.ensureInitialized();
+    FirebaseApp firebaseApp = await Firebase.initializeApp(
+      name: 'project',
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
     return firebaseApp;
   }
 
