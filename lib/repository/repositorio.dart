@@ -7,14 +7,13 @@ class Repositorio {
     await MyFirebase.contactsCollection.doc(id).delete();
   }
 
-  void editar(GlobalKey _formKey, String id, String name, String telefone, String email,
+  void editar(GlobalKey<FormState> formKey, String? id, String name, String telefone, String email,
       BuildContext context) async {
-    final _formKey = GlobalKey<FormState>();
     final nameController = TextEditingController(text: name);
     final telefoneController = TextEditingController(text: telefone);
     final emailController = TextEditingController(text: email);
 
-    if (_formKey.currentState!.validate()) {
+    if (formKey.currentState!.validate()) {
       try {
         await MyFirebase.contactsCollection.doc(id).update({
           'name': nameController.text.trim(),

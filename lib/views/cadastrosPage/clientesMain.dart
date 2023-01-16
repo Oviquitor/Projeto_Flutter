@@ -24,8 +24,20 @@ class _ClientesState extends State<Clientes> {
         child: Column(
           children: [
             Container(
-              height: 120,
+              padding: EdgeInsets.symmetric(horizontal: 32),
+              height: 100,
               color: Color.fromARGB(255, 255, 255, 255),
+              child: Column(
+                children: [
+                  TextFormField(
+                    textInputAction: TextInputAction.next,
+                    decoration: const InputDecoration(
+                      hintText: "Nome",
+                      //contentPadding: EdgeInsets.all(1),
+                    ),
+                  ),
+                ],
+              ),
             ),
             Container(
               child: StreamBuilder<QuerySnapshot>(

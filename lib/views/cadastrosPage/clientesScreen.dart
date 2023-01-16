@@ -28,10 +28,19 @@ class ClientesScreen extends StatefulWidget {
 
 class _ClientesScreenState extends State<ClientesScreen> {
   final _formKey = GlobalKey<FormState>();
-  final nameController = TextEditingController();
-  final telefoneController = TextEditingController();
-  final emailController = TextEditingController();
-  //var id2 = widget.id;
+  late final TextEditingController nameController;
+  late final TextEditingController telefoneController;
+  late final TextEditingController emailController;
+
+  @override
+  void initState() {
+    nameController = TextEditingController(text: widget.name);
+    telefoneController = TextEditingController(text: widget.phone);
+    emailController = TextEditingController(text: widget.email);
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +57,7 @@ class _ClientesScreenState extends State<ClientesScreen> {
         iconTheme: IconThemeData(color: Colors.black),
       ),
       body: Container(
-        padding: EdgeInsets.only(top: 160),
+        //padding: EdgeInsets.only(top: 160),
         child: SingleChildScrollView(
           child: Form(
             key: _formKey,
@@ -58,7 +67,6 @@ class _ClientesScreenState extends State<ClientesScreen> {
                   padding: const EdgeInsets.symmetric(
                     horizontal: 32,
                   ),
-                  height: 120,
                   child: Column(
                     children: [
                       TextFormField(
@@ -72,10 +80,10 @@ class _ClientesScreenState extends State<ClientesScreen> {
                         textInputAction: TextInputAction.next,
                         decoration: const InputDecoration(
                           hintText: "Nome",
-                          contentPadding: EdgeInsets.all(14),
+                          //contentPadding: EdgeInsets.all(1),
                         ),
                       ),
-                      const SizedBox(height: 20),
+                      const SizedBox(),
                       TextFormField(
                         controller: telefoneController,
                         textInputAction: TextInputAction.next,
@@ -88,10 +96,10 @@ class _ClientesScreenState extends State<ClientesScreen> {
                         },
                         decoration: const InputDecoration(
                           hintText: "Numero",
-                          contentPadding: EdgeInsets.all(14),
+                          //contentPadding: EdgeInsets.all(14),
                         ),
                       ),
-                      const SizedBox(height: 20),
+                      const SizedBox(),
                       TextFormField(
                         controller: emailController,
                         validator: (value) {
@@ -107,7 +115,7 @@ class _ClientesScreenState extends State<ClientesScreen> {
                           contentPadding: EdgeInsets.all(14),
                         ),
                       ),
-                      const SizedBox(height: 40),
+                      const SizedBox(),
                       SizedBox(
                         width: double.maxFinite,
                         child: ElevatedButton.icon(
