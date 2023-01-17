@@ -71,8 +71,8 @@ class _ClientesState extends State<Clientes> {
                           final contactId = documentos[index].id;
                           final contact =
                               documentos[index].data() as Map<String, dynamic>;
-                          final String name = contact['name'];
-                          final String phone = contact['phone'];
+                          final String name = contact['nome'];
+                          final String phone = contact['telefone'];
                           final String email = contact['email'];
                           final String avatar =
                               "https://avatars.dicebear.com/api/avataaars/$name.png";
@@ -111,7 +111,7 @@ class _ClientesState extends State<Clientes> {
                                 ),
                                 IconButton(
                                   onPressed: () {
-                                    Repositorio().deletar(contactId);
+                                    ClienteRepositorio().deletar(contactId);
                                   },
                                   splashRadius: 24,
                                   icon: const Icon(IconlyBroken.delete),

@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:project/repository/my_firebase.dart';
 
-class Repositorio {
+class ClienteRepositorio {
   late final String name;
   late final String telefone;
   late final String email;
@@ -19,8 +19,8 @@ class Repositorio {
     if (formKey.currentState!.validate()) {
       try {
         await MyFirebase.contactsCollection.doc(id).update({
-          'name': nameController.text.trim(),
-          'phone': telefoneController.text.trim(),
+          'nome': nameController.text.trim(),
+          'telefone': telefoneController.text.trim(),
           'email': emailController.text.trim(),
         });
         Navigator.pop(context);
@@ -51,8 +51,8 @@ class Repositorio {
     if (formKey.currentState!.validate()) {
       try {
         await MyFirebase.contactsCollection.add({
-          'name': nameController.text.trim(),
-          'phone': telefoneController.text.trim(),
+          'nome': nameController.text.trim(),
+          'telefone': telefoneController.text.trim(),
           'email': emailController.text.trim(),
         });
         Navigator.pop(context);

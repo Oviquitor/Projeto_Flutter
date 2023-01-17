@@ -158,7 +158,7 @@ class _ClientesScreenState extends State<ClientesScreen> {
                           ),
                           onPressed: () {
                             if (widget.action == ActionScreenClientes.novo) {
-                              Repositorio().addContact(
+                              ClienteRepositorio().addContact(
                                   _formKey,
                                   widget.id,
                                   nameController.text,
@@ -166,7 +166,7 @@ class _ClientesScreenState extends State<ClientesScreen> {
                                   emailController.text,
                                   context);
                             } else {
-                              Repositorio().editar(
+                              ClienteRepositorio().editar(
                                 _formKey,
                                 widget.id,
                                 nameController.text,
