@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:project/views/loginPage/login.dart';
+import 'package:project/views/loginPage/components/login.dart';
 import 'package:project/main.dart';
-import 'package:project/views/loginPage/novoUsuario.dart';
+import 'package:project/views/loginPage/components/novoUsuario.dart';
 
 class Inicio extends StatefulWidget {
   const Inicio({super.key});

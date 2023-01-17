@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:project/components/custom_text.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:project/views/loginPage/esqueceuSenha.dart';
-import 'package:project/views/loginPage/loginXX.dart';
+import 'package:project/views/loginPage/components/esqueceuSenha.dart';
+import 'package:project/views/loginPage/components/loginXX.dart';
 import 'package:project/views/menuPage/menu.dart';
 
 class LoginScreen extends StatefulWidget {

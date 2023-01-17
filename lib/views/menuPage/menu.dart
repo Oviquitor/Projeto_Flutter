@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:project/views/cadastrosPage/cadastrosMenu.dart';
+import 'package:project/views/cadastrosPage/components/cadastrosMenu.dart';
 import 'package:project/views/configPage/config.dart';
 import 'package:project/views/homePage/home.dart';
 import 'package:project/views/homePage/home2.dart';
-import 'package:project/views/menuPage/headerDrawer.dart';
+import 'package:project/views/menuPage/components/headerDrawer.dart';
 
 class Menu extends StatefulWidget {
   @override

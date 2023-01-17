@@ -4,8 +4,8 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:iconly/iconly.dart';
 import 'package:project/repository/my_firebase.dart';
-import 'package:project/repository/repositorio.dart';
-import 'package:project/views/cadastrosPage/clientesScreen.dart';
+import 'package:project/repository/clienteRepositorio.dart';
+import 'package:project/views/cadastrosPage/components/clientesScreen.dart';
 
 class Clientes extends StatefulWidget {
   const Clientes({super.key});
@@ -21,111 +21,120 @@ class _ClientesState extends State<Clientes> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        child: Column(
-          children: [
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 32),
-              height: 100,
-              color: Color.fromARGB(255, 255, 255, 255),
-              child: Column(
-                children: [
-                  TextFormField(
-                    textInputAction: TextInputAction.next,
-                    decoration: const InputDecoration(
-                      hintText: "Nome",
-                      //contentPadding: EdgeInsets.all(1),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              child: StreamBuilder<QuerySnapshot>(
-                stream: contactsSnapshot,
-                builder: (BuildContext context, snapshot) {
-                  if (snapshot.hasData) {
-                    final List<QueryDocumentSnapshot> documentos =
-                        snapshot.data!.docs;
-                    if (documentos.isEmpty) {
-                      return Center(
-                        child: Text(
-                          "Nenhum cliente cadastro",
-                          style: Theme.of(context).textTheme.headline6,
-                        ),
-                      );
-                    }
-                    return ListView.builder(
-                      scrollDirection: Axis.vertical,
-                      shrinkWrap: true,
-                      itemCount: documentos.length,
-                      physics: const BouncingScrollPhysics(),
-                      itemBuilder: (context, index) {
-                        final contactId = documentos[index].id;
-                        final contact =
-                            documentos[index].data() as Map<String, dynamic>;
-                        final String name = contact['name'];
-                        final String phone = contact['phone'];
-                        final String email = contact['email'];
-                        final String avatar =
-                            "https://avatars.dicebear.com/api/avataaars/$name.png";
-                        return ListTile(
-                          onTap: () {},
-                          leading: Hero(
-                            tag: contactId,
-                            child: CircleAvatar(
-                              backgroundImage: NetworkImage(
-                                avatar,
-                              ),
-                            ),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 32),
+                height: 130,
+                child: Column(
+                  children: [
+                    Padding(padding: EdgeInsets.only(top: 20)),
+                    SizedBox(
+                      height: 90,
+                      child: TextFormField(
+                        textInputAction: TextInputAction.next,
+                        decoration: InputDecoration(
+                          hintText: "Pesquisar",
+                          prefixIcon: Icon(Icons.search),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(18),
                           ),
-                          title: Text(name),
-                          subtitle: Text("$phone \n$email"),
-                          isThreeLine: true,
-                          //  trailing should be delete and edit button
-                          trailing: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              IconButton(
-                                onPressed: () {
-                                  Navigator.of(context).push(
-                                    MaterialPageRoute(
-                                      builder: (context) => ClientesScreen(
-                                          action: ActionScreenClientes.editar,
-                                          id: contactId,
-                                          name: name,
-                                          phone: phone,
-                                          email: email),
-                                    ),
-                                  );
-                                },
-                                splashRadius: 24,
-                                icon: const Icon(IconlyBroken.edit),
-                              ),
-                              IconButton(
-                                onPressed: () {
-                                  Repositorio().deletar(contactId);
-                                },
-                                splashRadius: 24,
-                                icon: const Icon(IconlyBroken.delete),
-                              ),
-                            ],
+                          isDense: true,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                child: StreamBuilder<QuerySnapshot>(
+                  stream: contactsSnapshot,
+                  builder: (BuildContext context, snapshot) {
+                    if (snapshot.hasData) {
+                      final List<QueryDocumentSnapshot> documentos =
+                          snapshot.data!.docs;
+                      if (documentos.isEmpty) {
+                        return Center(
+                          child: Text(
+                            "Nenhum cliente cadastro",
+                            style: Theme.of(context).textTheme.headline6,
                           ),
                         );
-                      },
-                    );
-                  }
-                  if (snapshot.hasError) {
+                      }
+                      return ListView.builder(
+                        scrollDirection: Axis.vertical,
+                        shrinkWrap: true,
+                        itemCount: documentos.length,
+                        physics: const BouncingScrollPhysics(),
+                        itemBuilder: (context, index) {
+                          final contactId = documentos[index].id;
+                          final contact =
+                              documentos[index].data() as Map<String, dynamic>;
+                          final String name = contact['name'];
+                          final String phone = contact['phone'];
+                          final String email = contact['email'];
+                          final String avatar =
+                              "https://avatars.dicebear.com/api/avataaars/$name.png";
+                          return ListTile(
+                            onTap: () {},
+                            leading: Hero(
+                              tag: contactId,
+                              child: CircleAvatar(
+                                backgroundImage: NetworkImage(
+                                  avatar,
+                                ),
+                              ),
+                            ),
+                            title: Text(name),
+                            subtitle: Text("$phone \n$email"),
+                            isThreeLine: true,
+                            //  trailing should be delete and edit button
+                            trailing: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                IconButton(
+                                  onPressed: () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (context) => ClientesScreen(
+                                            action: ActionScreenClientes.editar,
+                                            id: contactId,
+                                            name: name,
+                                            phone: phone,
+                                            email: email),
+                                      ),
+                                    );
+                                  },
+                                  splashRadius: 24,
+                                  icon: const Icon(IconlyBroken.edit),
+                                ),
+                                IconButton(
+                                  onPressed: () {
+                                    Repositorio().deletar(contactId);
+                                  },
+                                  splashRadius: 24,
+                                  icon: const Icon(IconlyBroken.delete),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      );
+                    }
+                    if (snapshot.hasError) {
+                      return const Center(
+                        child: Text("Erro ao carregar lista"),
+                      );
+                    }
                     return const Center(
-                      child: Text("Erro ao carregar lista"),
+                      child: CircularProgressIndicator.adaptive(),
                     );
-                  }
-                  return const Center(
-                    child: CircularProgressIndicator.adaptive(),
-                  );
-                },
+                  },
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

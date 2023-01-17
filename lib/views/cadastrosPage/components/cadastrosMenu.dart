@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:project/views/cadastrosPage/clientesMain.dart';
-import 'package:project/views/cadastrosPage/clientesScreen.dart';
+import 'package:project/views/cadastrosPage/components/clientesScreen.dart';
 import 'package:project/views/cadastrosPage/produtosMain.dart';
-import 'package:project/views/cadastrosPage/produtosScreen.dart';
+import 'package:project/views/cadastrosPage/components/produtosScreen.dart';
 import 'package:project/views/configPage/config.dart';
 
 class Cadastros extends StatefulWidget {

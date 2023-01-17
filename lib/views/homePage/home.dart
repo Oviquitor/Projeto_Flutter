@@ -3,8 +3,8 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:project/views/configPage/config.dart';
-import 'package:project/views/homePage/dashboard.dart';
-import 'package:project/views/homePage/vendas.dart';
+import 'package:project/views/homePage/components/dashboard.dart';
+import 'package:project/views/homePage/components/vendas.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
