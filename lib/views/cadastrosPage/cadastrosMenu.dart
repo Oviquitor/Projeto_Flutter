@@ -54,7 +54,9 @@ class _CadastrosState extends State<Cadastros> {
               );
             } else {
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => ProdutosScreen()),
+                MaterialPageRoute(
+                    builder: (context) =>
+                        ProdutosScreen(action: ActionScreenProdutos.novo)),
               );
             }
           },

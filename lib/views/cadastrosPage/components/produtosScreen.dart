@@ -1,21 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:iconly/iconly.dart';
+import 'package:project/repository/produtoRepositorio.dart';
 
 class ProdutosScreen extends StatefulWidget {
   final ActionScreenProdutos action;
   final String? id;
-  final String? name;
-  final String? phone;
-  final String? email;
+  final String? nomeProd;
+  final String? ref;
+  final String? un;
+  final String? marca;
+  final String? obs;
+  final String? vvenda;
+  final String? estoque;
 
   const ProdutosScreen({
     super.key,
     required this.action,
     this.id,
-    this.name,
-    this.phone,
-    this.email,
+    this.nomeProd,
+    this.ref,
+    this.un,
+    this.marca,
+    this.obs,
+    this.vvenda,
+    this.estoque,
   });
 
   @override
@@ -24,15 +34,23 @@ class ProdutosScreen extends StatefulWidget {
 
 class _ProdutosScreenState extends State<ProdutosScreen> {
   final _formKey = GlobalKey<FormState>();
-  late final TextEditingController nameController;
-  late final TextEditingController telefoneController;
-  late final TextEditingController emailController;
+  late final TextEditingController nomeProdController;
+  late final TextEditingController refController;
+  late final TextEditingController unController;
+  late final TextEditingController marcaController;
+  late final TextEditingController obsController;
+  late final TextEditingController vvendaController;
+  late final TextEditingController estoqueController;
 
   @override
   void initState() {
-    nameController = TextEditingController(text: widget.name);
-    telefoneController = TextEditingController(text: widget.phone);
-    emailController = TextEditingController(text: widget.email);
+    nomeProdController = TextEditingController(text: widget.nomeProd);
+    refController = TextEditingController(text: widget.ref);
+    unController = TextEditingController(text: widget.un);
+    marcaController = TextEditingController(text: widget.marca);
+    obsController = TextEditingController(text: widget.obs);
+    vvendaController = TextEditingController(text: widget.vvenda);
+    estoqueController = TextEditingController(text: widget.estoque);
 
     super.initState();
   }
@@ -60,11 +78,11 @@ class _ProdutosScreenState extends State<ProdutosScreen> {
                       SizedBox(
                         height: 70,
                         child: TextFormField(
-                          controller: nameController,
+                          controller: nomeProdController,
                           textInputAction: TextInputAction.next,
                           keyboardType: TextInputType.text,
                           decoration: InputDecoration(
-                            hintText: "Nome",
+                            hintText: "Nome do Produto",
                             prefixIcon: Icon(Icons.people),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(18),
@@ -73,7 +91,7 @@ class _ProdutosScreenState extends State<ProdutosScreen> {
                           ),
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return "Informe o email";
+                              return "Informe o nome do produto";
                             }
                             return null;
                           },
@@ -83,46 +101,98 @@ class _ProdutosScreenState extends State<ProdutosScreen> {
                       SizedBox(
                         height: 70,
                         child: TextFormField(
-                          controller: telefoneController,
+                          controller: refController,
                           textInputAction: TextInputAction.next,
                           keyboardType: TextInputType.number,
                           decoration: InputDecoration(
-                            hintText: "Numero",
+                            hintText: "Referencia",
                             prefixIcon: Icon(Icons.numbers),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(18),
                             ),
                             isDense: true,
                           ),
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return "Informe o numero";
-                            }
-                            return null;
-                          },
                         ),
                       ),
                       //Padding(padding: EdgeInsets.only(top: 20)),
                       SizedBox(
                         height: 70,
                         child: TextFormField(
-                          controller: emailController,
+                          controller: unController,
                           textInputAction: TextInputAction.done,
                           keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
-                            hintText: "Email",
+                            hintText: "UN",
                             prefixIcon: Icon(Icons.email),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(18),
                             ),
                             isDense: true,
                           ),
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return "Informe o email";
-                            }
-                            return null;
-                          },
+                        ),
+                      ),
+                      SizedBox(
+                        height: 70,
+                        child: TextFormField(
+                          controller: marcaController,
+                          textInputAction: TextInputAction.done,
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                            hintText: "Marca",
+                            prefixIcon: Icon(Icons.email),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                            isDense: true,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 70,
+                        child: TextFormField(
+                          controller: obsController,
+                          textInputAction: TextInputAction.done,
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                            hintText: "obs",
+                            prefixIcon: Icon(Icons.email),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                            isDense: true,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 70,
+                        child: TextFormField(
+                          controller: vvendaController,
+                          textInputAction: TextInputAction.done,
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                            hintText: "Valor de Venda",
+                            prefixIcon: Icon(Icons.email),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                            isDense: true,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 70,
+                        child: TextFormField(
+                          controller: estoqueController,
+                          textInputAction: TextInputAction.done,
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                            hintText: "estoque",
+                            prefixIcon: Icon(Icons.email),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                            isDense: true,
+                          ),
                         ),
                       ),
                       Padding(padding: EdgeInsets.only(top: 320)),
@@ -136,7 +206,7 @@ class _ProdutosScreenState extends State<ProdutosScreen> {
                               borderRadius: BorderRadius.circular(18),
                             ),
                           ),
-                          icon: const Icon(IconlyBroken.add_user),
+                          icon: const Icon(IconlyBold.add_user),
                           label: const Text(
                             "Salvar",
                             style: TextStyle(
@@ -144,23 +214,30 @@ class _ProdutosScreenState extends State<ProdutosScreen> {
                             ),
                           ),
                           onPressed: () {
-                            if (widget.action == ActionScreenClientes.novo) {
-                              ClienteRepositorio().addContact(
+                            if (widget.action == ActionScreenProdutos.novo) {
+                              ProdutoRepositorio().addProduto(
                                   _formKey,
                                   widget.id,
-                                  nameController.text,
-                                  telefoneController.text,
-                                  emailController.text,
+                                  nomeProdController.text,
+                                  refController.text,
+                                  unController.text,
+                                  marcaController.text,
+                                  obsController.text,
+                                  vvendaController.text,
+                                  estoqueController.text,
                                   context);
                             } else {
-                              ClienteRepositorio().editar(
-                                _formKey,
-                                widget.id,
-                                nameController.text,
-                                telefoneController.text,
-                                emailController.text,
-                                context,
-                              );
+                              ProdutoRepositorio().editar(
+                                  _formKey,
+                                  widget.id,
+                                  nomeProdController.text,
+                                  refController.text,
+                                  unController.text,
+                                  marcaController.text,
+                                  obsController.text,
+                                  vvendaController.text,
+                                  estoqueController.text,
+                                  context);
                             }
                           },
                         ),

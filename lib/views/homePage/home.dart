@@ -4,6 +4,8 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:project/views/configPage/config.dart';
 import 'package:project/views/homePage/components/dashboard.dart';
+import 'package:project/views/homePage/components/financeiro.dart';
+import 'package:project/views/homePage/components/meuDia.dart';
 import 'package:project/views/homePage/components/vendas.dart';
 
 class Home extends StatefulWidget {
@@ -41,10 +43,6 @@ class _HomeState extends State<Home> {
             onTap: () {
               setState(() {
                 currentIndex = index;
-                //HapticFeedback.lightImpact();
-                if (currentIndex == 2) {
-                  Configuracoes();
-                }
               });
             },
             splashColor: Colors.transparent,
@@ -135,6 +133,8 @@ class _HomeState extends State<Home> {
         children: [
           DashBoard(),
           Vendas(),
+          MeuDia(),
+          Financeiro(),
         ],
       ),
     );
@@ -142,15 +142,15 @@ class _HomeState extends State<Home> {
 
   List<IconData> listOfIcons = [
     Icons.home_rounded,
-    Icons.favorite_rounded,
-    Icons.settings_rounded,
-    Icons.person_rounded,
+    Icons.shopping_cart,
+    Icons.trending_up,
+    Icons.account_balance,
   ];
 
   List<String> listOfStrings = [
-    'Home',
-    'Favorite',
-    'Settings',
-    'Account',
+    'Inicio',
+    'Vendas',
+    'Meu Dia',
+    'finanças',
   ];
 }

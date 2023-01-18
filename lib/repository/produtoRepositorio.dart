@@ -8,7 +8,7 @@ class ProdutoRepositorio {
   late final String email;
 
   void deletar(String id) async {
-    await MyFirebase.contactsCollection.doc(id).delete();
+    await MyFirebase.produtosCollection.doc(id).delete();
   }
 
   void editar(
@@ -31,7 +31,7 @@ class ProdutoRepositorio {
     final estoqueController = TextEditingController(text: estoque);
     if (formKey.currentState!.validate()) {
       try {
-        await MyFirebase.contactsCollection.doc(id).update({
+        await MyFirebase.produtosCollection.doc(id).update({
           'nomeProd': nomeProdController.text.trim(),
           'ref': refController.text.trim(),
           'un': unController.text.trim(),
@@ -60,7 +60,7 @@ class ProdutoRepositorio {
     }
   }
 
-  void addContact(
+  void addProduto(
       GlobalKey<FormState> formKey,
       String? id,
       String nomeProd,
@@ -80,7 +80,7 @@ class ProdutoRepositorio {
     final estoqueController = TextEditingController(text: estoque);
     if (formKey.currentState!.validate()) {
       try {
-        await MyFirebase.contactsCollection.add({
+        await MyFirebase.produtosCollection.add({
           'nomeProd': nomeProdController.text.trim(),
           'ref': refController.text.trim(),
           'un': unController.text.trim(),

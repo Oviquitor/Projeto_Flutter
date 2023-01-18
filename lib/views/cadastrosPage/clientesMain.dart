@@ -52,9 +52,9 @@ class _ClientesState extends State<Clientes> {
                   stream: contactsSnapshot,
                   builder: (BuildContext context, snapshot) {
                     if (snapshot.hasData) {
-                      final List<QueryDocumentSnapshot> documentos =
+                      final List<QueryDocumentSnapshot> doc =
                           snapshot.data!.docs;
-                      if (documentos.isEmpty) {
+                      if (doc.isEmpty) {
                         return Center(
                           child: Text(
                             "Nenhum cliente cadastro",
@@ -65,12 +65,12 @@ class _ClientesState extends State<Clientes> {
                       return ListView.builder(
                         scrollDirection: Axis.vertical,
                         shrinkWrap: true,
-                        itemCount: documentos.length,
+                        itemCount: doc.length,
                         physics: const BouncingScrollPhysics(),
                         itemBuilder: (context, index) {
-                          final contactId = documentos[index].id;
+                          final contactId = doc[index].id;
                           final contact =
-                              documentos[index].data() as Map<String, dynamic>;
+                              doc[index].data() as Map<String, dynamic>;
                           final String name = contact['nome'];
                           final String phone = contact['telefone'];
                           final String email = contact['email'];
