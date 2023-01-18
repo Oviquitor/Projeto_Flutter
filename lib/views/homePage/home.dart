@@ -6,7 +6,7 @@ import 'package:project/views/configPage/config.dart';
 import 'package:project/views/homePage/components/dashboard.dart';
 import 'package:project/views/homePage/components/financeiro.dart';
 import 'package:project/views/homePage/components/meuDia.dart';
-import 'package:project/views/homePage/components/vendas.dart';
+import 'package:project/views/homePage/vendas/vendas.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
