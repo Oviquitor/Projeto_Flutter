@@ -4,6 +4,8 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:iconly/iconly.dart';
 import 'package:project/repository/my_firebase.dart';
+import 'package:project/views/homePage/vendas/components/search_dialog.dart';
+import 'package:project/views/menuPage/menu.dart';
 
 class Vendas extends StatefulWidget {
   const Vendas({super.key});
@@ -21,6 +23,21 @@ class _VendasState extends State<Vendas> {
         child: SingleChildScrollView(
           child: Column(
             children: [
+              Row(
+                children: [
+                  Padding(padding: EdgeInsets.only(left: 330)),
+                  FloatingActionButton(
+                    onPressed: () async {
+                      final search = showDialog(
+                          context: context, builder: (_) => SearchDialog());
+                      if (search != null) {
+                        //productManager.search = search;
+                      }
+                    },
+                    child: Icon(Icons.search),
+                  )
+                ],
+              ),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 32),
                 height: 130,
