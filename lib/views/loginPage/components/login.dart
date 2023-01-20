@@ -111,23 +111,17 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         onPressed: () {
-                          Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(
-                                builder: (BuildContext context) => Menu()),
-                            (Route<dynamic> route) => false,
-                          );
-                          /*if (_emailController.text.isEmpty ||
+                          if (_emailController.text.isEmpty ||
                               _senhaController.text.isEmpty) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
                                 content: Text('Informe o email e a senha'),
-                                backgroundColor': Colors.red,
+                                backgroundColor: Colors.red,
                               ),
                             );
                           } else {
                             login();
-                          }*/
+                          }
                         },
                         child: const Text(
                           'Entrar',
