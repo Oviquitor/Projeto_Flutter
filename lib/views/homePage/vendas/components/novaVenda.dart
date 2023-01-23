@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -26,20 +24,23 @@ class _NovaVendaState extends State<NovaVenda> {
   late final clienteController =
       TextEditingController(text: widget.clienteController);
 
-  late final int valor;
-  late final String nomeProd;
-  late final String marca;
-  late final String venda;
-  late final String ref;
-  late final String un;
-  late final String obs;
-  late final String estoque;
-  late final String quantidade;
-  late final String pordutoId;
-  late final Map<String, dynamic> produto;
+  //late final String pordutoId;
+  //late final Map<String, dynamic> produto;
 
   @override
   Widget build(BuildContext context) {
+    String? prodid;
+    Map<String, dynamic> produt;
+    int? valor;
+    String? nomeProd;
+    String nomePro;
+    String? marca;
+    String? venda;
+    String? ref;
+    String? un;
+    String? obs;
+    String? estoque;
+    String? quantidade;
     return Scaffold(
       appBar: AppBar(
         title: Text('Nova Venda'),
@@ -112,21 +113,21 @@ class _NovaVendaState extends State<NovaVenda> {
                       itemCount: documentos.length,
                       physics: const BouncingScrollPhysics(),
                       itemBuilder: (context, index) {
-                        pordutoId = documentos[index].id;
-                        produto =
+                        prodid = documentos[index].id;
+                        produt =
                             documentos[index].data() as Map<String, dynamic>;
-                        nomeProd = produto['nomeProd'];
-                        marca = produto['marca'];
-                        venda = produto['vvenda'];
-                        ref = produto['ref'];
-                        un = produto['un'];
-                        obs = produto['obs'];
-                        estoque = produto['estoque'];
-                        quantidade = produto['quantidade'];
-                        valor = produto['valor'];
+                        nomeProd = produt['nomeProd'];
+                        marca = produt['marca'];
+                        venda = produt['vvenda'];
+                        ref = produt['ref'];
+                        un = produt['un'];
+                        obs = produt['obs'];
+                        estoque = produt['estoque'];
+                        quantidade = produt['quantidade'];
+                        valor = produt['valor'];
                         return ListTile(
                           onTap: () {},
-                          title: Text(nomeProd),
+                          title: Text("$nomeProd"),
                           subtitle: Text("$marca \nR\$ $valor"),
                           isThreeLine: true,
                           //  trailing should be delete and edit button
@@ -135,7 +136,7 @@ class _NovaVendaState extends State<NovaVenda> {
                             children: [
                               IconButton(
                                 onPressed: () {
-                                  tmpVendaRepositorio().deletar(pordutoId);
+                                  tmpVendaRepositorio().deletar(prodid);
                                 },
                                 splashRadius: 24,
                                 icon: const Icon(IconlyBroken.delete),
@@ -186,9 +187,10 @@ class _NovaVendaState extends State<NovaVenda> {
                   ),
                 ),
                 onPressed: () {
+                  
                   VendaRepositorio().addVenda(
                     _formKey,
-                    pordutoId,
+                    prodid,
                     nomeProd,
                     ref,
                     un,
@@ -200,9 +202,10 @@ class _NovaVendaState extends State<NovaVenda> {
                     quantidade,
                     valor,
                   );
+                  tmpVendaRepositorio().deletaColecao();
                 },
                 child: const Text(
-                  'Entrar',
+                  'Salvar',
                   style: TextStyle(
                     fontSize: 18,
                   ),

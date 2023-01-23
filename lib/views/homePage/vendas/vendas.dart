@@ -16,7 +16,7 @@ class Vendas extends StatefulWidget {
 }
 
 class _VendasState extends State<Vendas> {
-  final contactsSnapshot = MyFirebase.contactsCollection.snapshots();
+  final vendasSnapshot = MyFirebase.vendasCollection.snapshots();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,21 +24,6 @@ class _VendasState extends State<Vendas> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Row(
-                children: [
-                  Padding(padding: EdgeInsets.only(left: 330)),
-                  FloatingActionButton(
-                    onPressed: () async {
-                      final search = showDialog(
-                          context: context, builder: (_) => SearchDialog());
-                      if (search != null) {
-                        //productManager.search = search;
-                      }
-                    },
-                    child: Icon(Icons.search),
-                  )
-                ],
-              ),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 32),
                 height: 130,
@@ -64,7 +49,7 @@ class _VendasState extends State<Vendas> {
               ),
               Container(
                 child: StreamBuilder<QuerySnapshot>(
-                  stream: contactsSnapshot,
+                  stream: vendasSnapshot,
                   builder: (BuildContext context, snapshot) {
                     if (snapshot.hasData) {
                       final List<QueryDocumentSnapshot> doc =
@@ -84,25 +69,22 @@ class _VendasState extends State<Vendas> {
                         physics: const BouncingScrollPhysics(),
                         itemBuilder: (context, index) {
                           final contactId = doc[index].id;
-                          final contact =
+                          final venda =
                               doc[index].data() as Map<String, dynamic>;
-                          final String name = contact['nome'];
-                          final String phone = contact['telefone'];
-                          final String email = contact['email'];
-                          final String avatar =
-                              "https://avatars.dicebear.com/api/avataaars/$name.png";
+                          final String name = venda['nome'];
+                          final String nomeProd = venda['email'];
+                          final String ref = venda['email'];
+                          final String un = venda['email'];
+                          final String marca = venda['email'];
+                          final String obs = venda['email'];
+                          final String vvenda = venda['email'];
+                          final String estoque = venda['email'];
+                          final String quantidade = venda['email'];
+                          final int valor = venda['email'];
                           return ListTile(
                             onTap: () {},
-                            leading: Hero(
-                              tag: contactId,
-                              child: CircleAvatar(
-                                backgroundImage: NetworkImage(
-                                  avatar,
-                                ),
-                              ),
-                            ),
                             title: Text(name),
-                            subtitle: Text("$phone \n$email"),
+                            subtitle: Text("$valor \n$nomeProd"),
                             isThreeLine: true,
                             //  trailing should be delete and edit button
                             trailing: Row(

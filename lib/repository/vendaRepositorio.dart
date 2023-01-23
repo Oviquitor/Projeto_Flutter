@@ -14,16 +14,16 @@ class VendaRepositorio {
   void addVenda(
     GlobalKey<FormState> formKey,
     String? id,
-    String nomeProd,
-    String ref,
-    String un,
-    String marca,
-    String obs,
-    String vvenda,
-    String estoque,
+    String? nomeProd,
+    String? ref,
+    String? un,
+    String? marca,
+    String? obs,
+    String? vvenda,
+    String? estoque,
     BuildContext context,
-    String quantidade,
-    int valor,
+    String? quantidade,
+    int? valor,
   ) async {
     final nomeProdController = TextEditingController(text: nomeProd);
     final refController = TextEditingController(text: ref);

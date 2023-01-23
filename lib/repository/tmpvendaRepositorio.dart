@@ -7,8 +7,16 @@ class tmpVendaRepositorio {
   late final String telefone;
   late final String email;
 
-  void deletar(String id) async {
+  void deletar(String? id) async {
     await MyFirebase.tmpVendasCollection.doc(id).delete();
+  }
+
+  void deletaColecao() async {
+    await MyFirebase.tmpVendasCollection.get().then((snapshot) {
+      for (var doc in snapshot.docs) {
+        doc.reference.delete();
+      }
+    });
   }
 
   void addVenda(
