@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:iconly/iconly.dart';
 import 'package:project/repository/my_firebase.dart';
+import 'package:project/views/homePage/vendas/components/novaVenda.dart';
 import 'package:project/views/homePage/vendas/components/search_dialog.dart';
 import 'package:project/views/menuPage/menu.dart';
 
@@ -138,7 +139,14 @@ class _VendasState extends State<Vendas> {
                 padding: EdgeInsets.only(left: 275),
                 child: SizedBox(
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) => NovaVenda(),
+                        ),
+                      );
+                    },
                     child: Icon(
                       Icons.add,
                       color: Colors.white,

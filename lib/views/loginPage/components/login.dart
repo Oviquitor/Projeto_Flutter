@@ -4,7 +4,6 @@ import 'package:project/components/custom_text.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:project/views/loginPage/components/esqueceuSenha.dart';
-import 'package:project/views/loginPage/components/loginXX.dart';
 import 'package:project/views/menuPage/menu.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -111,17 +110,23 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         onPressed: () {
-                          if (_emailController.text.isEmpty ||
-                              _senhaController.text.isEmpty) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('Informe o email e a senha'),
-                                backgroundColor: Colors.red,
-                              ),
-                            );
-                          } else {
-                            login();
-                          }
+                          // if (_emailController.text.isEmpty ||
+                          //     _senhaController.text.isEmpty) {
+                          //   ScaffoldMessenger.of(context).showSnackBar(
+                          //     const SnackBar(
+                          //       content: Text('Informe o email e a senha'),
+                          //       backgroundColor: Colors.red,
+                          //     ),
+                          //   );
+                          // } else {
+                          //   login();
+                          // }
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) => Menu()),
+                            (Route<dynamic> route) => false,
+                          );
                         },
                         child: const Text(
                           'Entrar',
