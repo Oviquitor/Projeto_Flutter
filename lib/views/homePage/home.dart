@@ -3,7 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:project/views/configPage/config.dart';
-import 'package:project/views/homePage/components/dashboard.dart';
+import 'package:project/views/homePage/dashBoard/dashboard.dart';
 import 'package:project/views/homePage/components/financeiro.dart';
 import 'package:project/views/homePage/components/meuDia.dart';
 import 'package:project/views/homePage/vendas/vendas.dart';

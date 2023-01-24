@@ -1,12 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:iconly/iconly.dart';
 import 'package:project/repository/my_firebase.dart';
 import 'package:project/views/homePage/vendas/components/novaVenda.dart';
-import 'package:project/views/homePage/vendas/components/search_dialog.dart';
-import 'package:project/views/menuPage/menu.dart';
 
 class Vendas extends StatefulWidget {
   const Vendas({super.key});
@@ -57,7 +53,7 @@ class _VendasState extends State<Vendas> {
                       if (doc.isEmpty) {
                         return Center(
                           child: Text(
-                            "Nenhum cliente cadastro",
+                            "Nenhuma venda encontrada",
                             style: Theme.of(context).textTheme.headline6,
                           ),
                         );
@@ -71,19 +67,19 @@ class _VendasState extends State<Vendas> {
                           final contactId = doc[index].id;
                           final venda =
                               doc[index].data() as Map<String, dynamic>;
-                          final String name = venda['nome'];
-                          final String nomeProd = venda['email'];
-                          final String ref = venda['email'];
-                          final String un = venda['email'];
-                          final String marca = venda['email'];
-                          final String obs = venda['email'];
-                          final String vvenda = venda['email'];
-                          final String estoque = venda['email'];
-                          final String quantidade = venda['email'];
-                          final int valor = venda['email'];
+                          final String nome = venda['nome'];
+                          final String nomeProd = venda['nomeProd'];
+                          final String ref = venda['ref'];
+                          final String un = venda['un'];
+                          final String marca = venda['marca'];
+                          final String obs = venda['obs'];
+                          final String vvenda = venda['vvenda'];
+                          final String estoque = venda['estoque'];
+                          final String quantidade = venda['quantidade'];
+                          final int valor = venda['valor'];
                           return ListTile(
                             onTap: () {},
-                            title: Text(name),
+                            title: Text(nome),
                             subtitle: Text("$valor \n$nomeProd"),
                             isThreeLine: true,
                             //  trailing should be delete and edit button

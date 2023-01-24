@@ -24,9 +24,6 @@ class _NovaVendaState extends State<NovaVenda> {
   late final clienteController =
       TextEditingController(text: widget.clienteController);
 
-  //late final String pordutoId;
-  //late final Map<String, dynamic> produto;
-
   @override
   Widget build(BuildContext context) {
     String? prodid;
@@ -102,7 +99,7 @@ class _NovaVendaState extends State<NovaVenda> {
                     if (documentos.isEmpty) {
                       return Center(
                         child: Text(
-                          "Nenhum produto cadastro",
+                          "Nenhum produto informado",
                           style: Theme.of(context).textTheme.headline6,
                         ),
                       );
@@ -187,7 +184,6 @@ class _NovaVendaState extends State<NovaVenda> {
                   ),
                 ),
                 onPressed: () {
-                  
                   VendaRepositorio().addVenda(
                     _formKey,
                     prodid,
@@ -201,6 +197,7 @@ class _NovaVendaState extends State<NovaVenda> {
                     context,
                     quantidade,
                     valor,
+                    clienteController.text,
                   );
                   tmpVendaRepositorio().deletaColecao();
                 },
