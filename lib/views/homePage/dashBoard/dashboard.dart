@@ -28,6 +28,7 @@ class _DashBoardState extends State<DashBoard> {
                   return Card(
                     color: Colors.black,
                     child: Container(
+                      decoration: BoxDecoration(),
                       width: 350,
                       child: ListTile(
                         title: Text(''),
