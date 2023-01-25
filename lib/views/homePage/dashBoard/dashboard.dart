@@ -10,6 +10,8 @@ class DashBoard extends StatefulWidget {
 }
 
 class _DashBoardState extends State<DashBoard> {
+  final int items = 2;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,29 +20,23 @@ class _DashBoardState extends State<DashBoard> {
           children: [
             Padding(padding: EdgeInsets.only(top: 40)),
             SizedBox(
-              height: 200,
-              width: 370,
-              child: Card(
-                elevation: 8,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                  side: BorderSide(
-                    width: 1.0,
-                    color: Color.fromARGB(255, 36, 34, 34),
-                  ),
-                ),
-                shadowColor: Color.fromARGB(255, 54, 54, 54),
-                child: Column(
-                  children: <Widget>[
-                    ListTile(
-                      title: Text('Título do card'),
-                      subtitle: Text('Texto do card'),
+              height: 220,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: items,
+                itemBuilder: (context, index) {
+                  return Card(
+                    color: Colors.black,
+                    child: Container(
+                      width: 350,
+                      child: ListTile(
+                        title: Text(''),
+                      ),
                     ),
-                  ],
-                ),
+                  );
+                },
               ),
             ),
-            
           ],
         ),
       ),
