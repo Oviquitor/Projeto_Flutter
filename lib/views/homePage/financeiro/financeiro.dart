@@ -12,6 +12,14 @@ class Financeiro extends StatefulWidget {
 
 class _FinanceiroState extends State<Financeiro> {
   late DateTime hoje;
+  int paginaAtual = 0;
+  late PageController pageController;
+
+  @override
+  void initState() {
+    super.initState();
+    pageController = PageController(initialPage: paginaAtual);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +28,133 @@ class _FinanceiroState extends State<Financeiro> {
     return Scaffold(
       body: Column(
         children: [
+          Padding(padding: EdgeInsets.only(top: 10)),
+          Container(
+            padding: EdgeInsets.only(right: 300),
+            child: Text(
+              'Caixa',
+              style: TextStyle(
+                fontSize: 20,
+                //fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.only(right: 230),
+            child: Text(
+              'R\$ 150,00',
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Padding(padding: EdgeInsets.only(top: 40)),
+          Row(
+            children: [
+              Padding(padding: EdgeInsets.only(left: 30)),
+              Card(
+                color: Colors.black,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Container(
+                  decoration: BoxDecoration(),
+                  width: 50,
+                  height: 50,
+                  child: ListTile(
+                    title: Text(''),
+                  ),
+                ),
+              ),
+              Padding(padding: EdgeInsets.only(left: 30)),
+              Card(
+                color: Colors.black,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Container(
+                  decoration: BoxDecoration(),
+                  width: 50,
+                  height: 50,
+                  child: ListTile(
+                    title: Text(''),
+                  ),
+                ),
+              ),
+              Padding(padding: EdgeInsets.only(left: 30)),
+              Card(
+                color: Colors.black,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Container(
+                  decoration: BoxDecoration(),
+                  width: 50,
+                  height: 50,
+                  child: ListTile(
+                    title: Text(''),
+                  ),
+                ),
+              ),
+              Padding(padding: EdgeInsets.only(left: 30)),
+              Card(
+                color: Colors.black,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Container(
+                  decoration: BoxDecoration(),
+                  width: 50,
+                  height: 50,
+                  child: ListTile(
+                    title: Text(''),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Padding(padding: EdgeInsets.only(top: 5)),
+          Row(
+            children: [
+              Container(
+                padding: EdgeInsets.only(left: 30),
+                child: Text(
+                  'Pagar',
+                  style: TextStyle(
+                    fontSize: 17,
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.only(left: 30),
+                child: Text(
+                  'Receber',
+                  style: TextStyle(
+                    fontSize: 17,
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.only(left: 30),
+                child: Text(
+                  'Depo.',
+                  style: TextStyle(
+                    fontSize: 17,
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.only(left: 35),
+                child: Text(
+                  'Sacar',
+                  style: TextStyle(
+                    fontSize: 17,
+                  ),
+                ),
+              ),
+            ],
+          ),
           Container(
             padding: EdgeInsets.only(top: 20),
             child: Center(
@@ -31,56 +166,6 @@ class _FinanceiroState extends State<Financeiro> {
               ),
             ),
           ),
-          Padding(padding: EdgeInsets.only(top: 20)),
-          Row(
-            children: [
-              Container(
-                padding: EdgeInsets.only(left: 50),
-                child: Text(
-                  'Caixa',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.only(left: 155),
-                child: Text(
-                  'Banco',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              Container(
-                padding: EdgeInsets.only(left: 30),
-                child: Text(
-                  'RS 150,00',
-                  style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.only(left: 100),
-                child: Text(
-                  'RS 150,00',
-                  style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Padding(padding: EdgeInsets.only(top: 20)),
         ],
       ),
     );

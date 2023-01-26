@@ -67,7 +67,9 @@ class _CadastrosState extends State<Cadastros> {
           currentIndex: paginaAtual,
           items: [
             BottomNavigationBarItem(
-                icon: Icon(Icons.person), label: 'Clientes'),
+              icon: Icon(Icons.person),
+              label: 'Clientes',
+            ),
             BottomNavigationBarItem(
               icon: Icon(Icons.production_quantity_limits),
               label: 'Produtos',
