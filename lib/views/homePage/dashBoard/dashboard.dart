@@ -19,9 +19,9 @@ class _DashBoardState extends State<DashBoard> {
       body: Center(
         child: Column(
           children: [
-            Padding(padding: EdgeInsets.only(top: 40)),
+            Padding(padding: EdgeInsets.only(top: 20)),
             SizedBox(
-              height: 200,
+              height: 170,
               width: 350,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
@@ -43,30 +43,55 @@ class _DashBoardState extends State<DashBoard> {
                 },
               ),
             ),
-            Padding(padding: EdgeInsets.only(top: 40)),
+            Padding(padding: EdgeInsets.only(top: 20)),
+            Container(
+              child: SizedBox(
+                child: Text(
+                  'Despesas mensais',
+                  style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+            Padding(padding: EdgeInsets.only(top: 20)),
             SizedBox(
-              height: 100,
+              height: 80,
               width: 350,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: cards2,
                 itemBuilder: (context, index) {
-                  return Card(
-                    color: Colors.black,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Container(
-                      decoration: BoxDecoration(),
-                      width: 90,
-                      child: ListTile(
-                        title: Text(''),
+                  return SizedBox(
+                    height: 30,
+                    child: Card(
+                      elevation: 8.0,
+                      color: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Container(
+                        decoration: BoxDecoration(),
+                        width: 80,
+                        height: 60,
+                        child: ListTile(
+                          title: Text(''),
+                        ),
                       ),
                     ),
                   );
                 },
               ),
             ),
+            
+            // Card(
+            //   elevation: 8.0,
+            //   shape: RoundedRectangleBorder(
+            //     borderRadius: BorderRadius.circular(10),
+            //   ),
+            //   child: Container(
+            //     width: 200,
+            //     height: 150,
+            //   ),
+            // ),
           ],
         ),
       ),
