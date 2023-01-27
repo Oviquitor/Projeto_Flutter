@@ -21,26 +21,108 @@ class _MeuDiaState extends State<MeuDia> {
           child: Column(
             children: [
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 32),
-                height: 130,
                 child: Column(
                   children: [
-                    Padding(padding: EdgeInsets.only(top: 20)),
-                    SizedBox(
-                      height: 90,
-                      child: TextFormField(
-                        textInputAction: TextInputAction.next,
-                        decoration: InputDecoration(
-                          hintText: "Pesquisar",
-                          prefixIcon: Icon(Icons.search),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(18),
+                    Padding(padding: EdgeInsets.only(top: 30)),
+                    Row(
+                      children: [
+                        Padding(padding: EdgeInsets.only(left: 22)),
+                        Card(
+                          color: Colors.black,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
                           ),
-                          isDense: true,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            width: 150,
+                            height: 100,
+                            child: Column(
+                              children: [
+                                Container(
+                                  child: SizedBox(
+                                    child: Text(
+                                      'A Receber',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 17,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Padding(padding: EdgeInsets.only(top: 15)),
+                                Container(
+                                  child: SizedBox(
+                                    child: Text(
+                                      'R\$ 2.365,87',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
-                      ),
+                        Padding(padding: EdgeInsets.only(left: 30)),
+                        Card(
+                          color: Colors.black,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            width: 150,
+                            height: 100,
+                            child: Column(
+                              children: [
+                                Container(
+                                  child: SizedBox(
+                                    child: Text(
+                                      'A Pagar',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 17,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Padding(padding: EdgeInsets.only(top: 15)),
+                                Container(
+                                  child: SizedBox(
+                                    child: Text(
+                                      'R\$ 1.243,99',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
+                ),
+              ),
+              Padding(padding: EdgeInsets.only(top: 30)),
+              Container(
+                child: SizedBox(
+                  child: Text(
+                    'Resumo meu dia',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                    ),
+                  ),
                 ),
               ),
               Container(
@@ -89,12 +171,7 @@ class _MeuDiaState extends State<MeuDia> {
                                 IconButton(
                                   onPressed: () {},
                                   splashRadius: 24,
-                                  icon: const Icon(IconlyBold.edit),
-                                ),
-                                IconButton(
-                                  onPressed: () {},
-                                  splashRadius: 24,
-                                  icon: const Icon(IconlyBroken.delete),
+                                  icon: const Icon(IconlyBroken.arrow_up),
                                 ),
                               ],
                             ),
@@ -111,31 +188,6 @@ class _MeuDiaState extends State<MeuDia> {
                       child: CircularProgressIndicator.adaptive(),
                     );
                   },
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.only(left: 275),
-                child: SizedBox(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (BuildContext context) => NovaVenda(),
-                        ),
-                      );
-                    },
-                    child: Icon(
-                      Icons.add,
-                      color: Colors.white,
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      shape: CircleBorder(),
-                      padding: EdgeInsets.all(18),
-                      backgroundColor: Colors.blue, // <-- Button color
-                      foregroundColor: Colors.black, // <-- Splash color
-                    ),
-                  ),
                 ),
               ),
             ],

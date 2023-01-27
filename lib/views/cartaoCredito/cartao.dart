@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-class Configuracoes extends StatelessWidget {
-  const Configuracoes({super.key});
+class Cartao extends StatefulWidget {
+  const Cartao({super.key});
 
+  @override
+  State<Cartao> createState() => _CartaoState();
+}
+
+class _CartaoState extends State<Cartao> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-        child: Text('Configurações'),
-      ),
+      body: Center(child: Text('Cartao')),
     );
   }
 }

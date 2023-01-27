@@ -4,6 +4,10 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:intl/intl.dart';
 import 'package:project/repository/my_firebase.dart';
+import 'package:project/views/homePage/financeiro/components/depositar.dart';
+import 'package:project/views/homePage/financeiro/components/pagar.dart';
+import 'package:project/views/homePage/financeiro/components/receber.dart';
+import 'package:project/views/homePage/financeiro/components/sacar.dart';
 
 class Financeiro extends StatefulWidget {
   const Financeiro({super.key});
@@ -40,19 +44,10 @@ class _FinanceiroState extends State<Financeiro> {
                   Container(
                     padding: EdgeInsets.only(right: 50),
                     child: Text(
-                      'Caixa',
+                      'Meu dinheiro',
                       style: TextStyle(
                         fontSize: 20,
                         //fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  Padding(padding: EdgeInsets.only(left: 1)),
-                  Container(
-                    child: Text(
-                      formattedDate,
-                      style: TextStyle(
-                        fontSize: 20,
                       ),
                     ),
                   ),
@@ -84,7 +79,13 @@ class _FinanceiroState extends State<Financeiro> {
                       width: 50,
                       height: 50,
                       child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => Pagar(),
+                            ),
+                          );
+                        },
                         splashRadius: 24,
                         icon: const Icon(
                           Icons.arrow_upward,
@@ -104,7 +105,13 @@ class _FinanceiroState extends State<Financeiro> {
                       width: 50,
                       height: 50,
                       child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => Receber(),
+                            ),
+                          );
+                        },
                         splashRadius: 24,
                         icon: const Icon(
                           Icons.arrow_downward,
@@ -124,7 +131,13 @@ class _FinanceiroState extends State<Financeiro> {
                       width: 50,
                       height: 50,
                       child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => Depositar(),
+                            ),
+                          );
+                        },
                         splashRadius: 24,
                         icon: const Icon(
                           Icons.account_balance,
@@ -144,7 +157,13 @@ class _FinanceiroState extends State<Financeiro> {
                       width: 50,
                       height: 50,
                       child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => Sacar(),
+                            ),
+                          );
+                        },
                         splashRadius: 24,
                         icon: const Icon(
                           Icons.account_balance_wallet,
@@ -204,6 +223,7 @@ class _FinanceiroState extends State<Financeiro> {
                     'Transações recentes',
                     style: TextStyle(
                       fontSize: 18,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
@@ -254,7 +274,7 @@ class _FinanceiroState extends State<Financeiro> {
                                 IconButton(
                                   onPressed: () {},
                                   splashRadius: 24,
-                                  icon: const Icon(Icons.shower),
+                                  icon: const Icon(Icons.navigate_next),
                                 ),
                               ],
                             ),

@@ -26,6 +26,9 @@ class _NovaVendaState extends State<NovaVenda> {
 
   @override
   Widget build(BuildContext context) {
+    var heightListaItens = MediaQuery.of(context).size.height * 0.734;
+    var widthButton = MediaQuery.of(context).size.width * 50;
+
     String? prodid;
     Map<String, dynamic> produt;
     int? valor;
@@ -39,6 +42,56 @@ class _NovaVendaState extends State<NovaVenda> {
     String? estoque;
     String? quantidade;
     return Scaffold(
+      bottomNavigationBar: GestureDetector(
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.black,
+          ),
+          height: 50,
+          child: const Center(
+            child: Text(
+              "Salvar",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+              ),
+            ),
+          ),
+        ),
+        onTap: (() {
+          VendaRepositorio().addVenda(
+            _formKey,
+            prodid,
+            nomeProd,
+            ref,
+            un,
+            marca,
+            obs,
+            venda,
+            estoque,
+            context,
+            quantidade,
+            valor,
+            clienteController.text,
+          );
+          tmpVendaRepositorio().deletaColecao();
+        }),
+      ),
+      floatingActionButton: Align(
+        alignment: Alignment.bottomRight,
+        child: FloatingActionButton(
+          backgroundColor: Colors.blue[500],
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (BuildContext context) => PesquisaProdutos(),
+              ),
+            );
+          },
+          child: Icon(Icons.add),
+        ),
+      ),
       appBar: AppBar(
         title: Text('Nova Venda'),
         centerTitle: true,
@@ -49,44 +102,42 @@ class _NovaVendaState extends State<NovaVenda> {
         child: Column(
           children: [
             Container(
-              child: SingleChildScrollView(
-                child: Row(
-                  children: [
-                    Padding(padding: EdgeInsets.all(10)),
-                    Expanded(
-                      child: TextFormField(
-                        controller: clienteController,
-                        decoration: InputDecoration(
-                          labelText: 'Cliente',
-                          hintText: 'Nome do cliente',
+              child: Row(
+                children: [
+                  Padding(padding: EdgeInsets.all(10)),
+                  Expanded(
+                    child: TextFormField(
+                      controller: clienteController,
+                      decoration: const InputDecoration(
+                        labelText: 'Cliente',
+                        hintText: 'Nome do cliente',
+                      ),
+                    ),
+                  ),
+                  Padding(padding: EdgeInsets.all(10)),
+                  Padding(
+                    padding: EdgeInsets.only(top: 15),
+                    child: SizedBox(
+                      height: 45,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  PesquisaClientes(),
+                            ),
+                          );
+                        },
+                        child: Icon(Icons.search),
+                        style: ElevatedButton.styleFrom(
+                          shape: CircleBorder(),
                         ),
                       ),
                     ),
-                    Padding(padding: EdgeInsets.all(10)),
-                    Padding(
-                      padding: EdgeInsets.only(top: 15),
-                      child: SizedBox(
-                        height: 45,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (BuildContext context) =>
-                                    PesquisaClientes(),
-                              ),
-                            );
-                          },
-                          child: Icon(Icons.search),
-                          style: ElevatedButton.styleFrom(
-                            shape: CircleBorder(),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(padding: EdgeInsets.all(10)),
-                  ],
-                ),
+                  ),
+                  Padding(padding: EdgeInsets.all(10)),
+                ],
               ),
             ),
             Container(
@@ -104,44 +155,58 @@ class _NovaVendaState extends State<NovaVenda> {
                         ),
                       );
                     }
-                    return ListView.builder(
-                      scrollDirection: Axis.vertical,
-                      shrinkWrap: true,
-                      itemCount: documentos.length,
-                      physics: const BouncingScrollPhysics(),
-                      itemBuilder: (context, index) {
-                        prodid = documentos[index].id;
-                        produt =
-                            documentos[index].data() as Map<String, dynamic>;
-                        nomeProd = produt['nomeProd'];
-                        marca = produt['marca'];
-                        venda = produt['vvenda'];
-                        ref = produt['ref'];
-                        un = produt['un'];
-                        obs = produt['obs'];
-                        estoque = produt['estoque'];
-                        quantidade = produt['quantidade'];
-                        valor = produt['valor'];
-                        return ListTile(
-                          onTap: () {},
-                          title: Text("$nomeProd"),
-                          subtitle: Text("$marca \nR\$ $valor"),
-                          isThreeLine: true,
-                          //  trailing should be delete and edit button
-                          trailing: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              IconButton(
-                                onPressed: () {
-                                  tmpVendaRepositorio().deletar(prodid);
-                                },
-                                splashRadius: 24,
-                                icon: const Icon(IconlyBroken.delete),
+                    return Container(
+                      padding: const EdgeInsets.all(16),
+                      height: heightListaItens,
+                      color: Color.fromARGB(255, 202, 227, 247),
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.vertical,
+                        child: ListView.builder(
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+                          itemCount: documentos.length,
+                          physics: const BouncingScrollPhysics(),
+                          itemBuilder: (context, index) {
+                            prodid = documentos[index].id;
+                            produt = documentos[index].data()
+                                as Map<String, dynamic>;
+                            nomeProd = produt['nomeProd'];
+                            marca = produt['marca'];
+                            venda = produt['vvenda'];
+                            ref = produt['ref'];
+                            un = produt['un'];
+                            obs = produt['obs'];
+                            estoque = produt['estoque'];
+                            quantidade = produt['quantidade'];
+                            valor = produt['valor'];
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Material(
+                                elevation: 6,
+                                child: ListTile(
+                                  onTap: () {},
+                                  title: Text("$nomeProd"),
+                                  subtitle: Text("$marca \nR\$ $valor"),
+                                  isThreeLine: true,
+                                  //  trailing should be delete and edit button
+                                  trailing: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      IconButton(
+                                        onPressed: () {
+                                          tmpVendaRepositorio().deletar(prodid);
+                                        },
+                                        splashRadius: 24,
+                                        icon: const Icon(IconlyBroken.delete),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                               ),
-                            ],
-                          ),
-                        );
-                      },
+                            );
+                          },
+                        ),
+                      ),
                     );
                   }
                   if (snapshot.hasError) {
@@ -153,60 +218,6 @@ class _NovaVendaState extends State<NovaVenda> {
                     child: CircularProgressIndicator.adaptive(),
                   );
                 },
-              ),
-            ),
-            Stack(
-              children: [
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: FloatingActionButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (BuildContext context) => PesquisaProdutos(),
-                        ),
-                      );
-                    },
-                    child: Icon(Icons.add),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 50,
-              width: 340,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.black,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18),
-                  ),
-                ),
-                onPressed: () {
-                  VendaRepositorio().addVenda(
-                    _formKey,
-                    prodid,
-                    nomeProd,
-                    ref,
-                    un,
-                    marca,
-                    obs,
-                    venda,
-                    estoque,
-                    context,
-                    quantidade,
-                    valor,
-                    clienteController.text,
-                  );
-                  tmpVendaRepositorio().deletaColecao();
-                },
-                child: const Text(
-                  'Salvar',
-                  style: TextStyle(
-                    fontSize: 18,
-                  ),
-                ),
               ),
             ),
           ],
