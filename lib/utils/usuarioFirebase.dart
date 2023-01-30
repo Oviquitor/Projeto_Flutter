@@ -7,6 +7,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:project/components/custom_text.dart';
 import 'package:project/views/loginPage/inicio.dart';
 import 'package:project/views/menuPage/menu.dart';
+import 'package:project/views/menuPage/menu2.dart';
 
 class Usuario {
   final TextEditingController nomeController;

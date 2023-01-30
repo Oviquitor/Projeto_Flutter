@@ -119,7 +119,13 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             );
                           } else {
-                            login();
+                            //login();
+                            Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) => Menu()),
+                              (Route<dynamic> route) => false,
+                            );
                           }
                         },
                         child: const Text(

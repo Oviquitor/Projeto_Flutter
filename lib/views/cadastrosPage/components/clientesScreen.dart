@@ -4,7 +4,6 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:iconly/iconly.dart';
 import 'package:project/repository/my_firebase.dart';
 import 'package:project/repository/clienteRepositorio.dart';
-import 'package:project/views/menuPage/menu.dart';
 
 class ClientesScreen extends StatefulWidget {
   final ActionScreenClientes action;
