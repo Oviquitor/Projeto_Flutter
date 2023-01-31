@@ -1,11 +1,14 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:project/models/gerenciamentoPagina.dart';
+import 'package:provider/provider.dart';
 
 class TituloDrawer extends StatelessWidget {
   final IconData iconData;
   final String titulo;
   final int pagina;
+
   const TituloDrawer(
       {super.key,
       required this.iconData,
@@ -14,24 +17,28 @@ class TituloDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final int currentPage = context.watch<GerenciamentoPagina>().pagina;
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        context.read<GerenciamentoPagina>().setPage(pagina);
+      },
       child: SizedBox(
         height: 60,
         child: Row(
           children: [
-            SizedBox(width: 30),
-            Icon(
-              iconData,
-              size: 32,
-              color: Colors.grey[700],
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 32),
+              child: Icon(
+                iconData,
+                size: 32,
+                color: currentPage == pagina ? Colors.grey[700] : Colors.black,
+              ),
             ),
-            SizedBox(width: 20),
             Text(
               titulo,
               style: TextStyle(
                 fontSize: 16,
-                color: Colors.grey[700],
+                color: currentPage == pagina ? Colors.grey[700] : Colors.black,
               ),
             ),
           ],

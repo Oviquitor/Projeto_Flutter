@@ -6,7 +6,7 @@ import 'package:project/views/configPage/config.dart';
 import 'package:project/views/homePage/home.dart';
 import 'package:project/views/homePage/home2.dart';
 import 'package:project/views/menuPage/components/tituloDrawer.dart';
-import 'package:project/views/menuPage/old/headerDrawer.dart';
+import 'package:project/views/menuPage/.old/headerDrawer.dart';
 import 'package:project/views/transacoes/transacoes.dart';
 
 class Menu2 extends StatefulWidget {

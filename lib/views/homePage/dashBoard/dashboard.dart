@@ -1,8 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:project/repository/my_firebase.dart';
+import 'package:project/views/menuPage/components/customDrawer.dart';
 
 class DashBoard extends StatefulWidget {
   const DashBoard({super.key});
@@ -19,6 +17,8 @@ class _DashBoardState extends State<DashBoard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: CustomDrawer(),
+      appBar: AppBar(),
       body: Container(
         child: SingleChildScrollView(
           child: Column(
