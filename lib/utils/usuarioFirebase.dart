@@ -11,6 +11,7 @@ import 'package:project/views/menuPage/menu.dart';
 class Usuario {
   final TextEditingController nomeController;
   final TextEditingController emailController;
+  
   final TextEditingController senhaController;
   final TextEditingController? confirmarSenhaController;
   final bool cadastroUsuario;
