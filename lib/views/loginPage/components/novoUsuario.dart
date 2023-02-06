@@ -27,49 +27,57 @@ class _NovoUsuarioState extends State<NovoUsuario> {
         child: SingleChildScrollView(
           child: Column(
             children: [
+              Padding(padding: EdgeInsets.only(top: 30)),
               Container(
-                padding: EdgeInsets.only(top: 160),
-                width: 320,
-                child: SizedBox(
-                  child: Text.rich(
-                    TextSpan(
-                      style: TextStyle(
-                        fontSize: 35,
-                      ),
-                      children: [
-                        TextSpan(
-                          text: 'Novo usuário',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 32,
-                ),
+                padding: const EdgeInsets.symmetric(horizontal: 32),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Padding(padding: EdgeInsets.only(top: 120)),
+                    SizedBox(
+                      child: Text(
+                        'Olá,\nseja bem vindo\nao OutSet',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 40,
+                          height: 1,
+                        ),
+                      ),
+                    ),
+                    Padding(padding: EdgeInsets.only(top: 18)),
+                    SizedBox(
+                      child: Text(
+                        'para acessar o aplicativo preencha todos os campos a baixo',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 32),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Padding(padding: EdgeInsets.only(top: 80)),
                     //nome
                     CustomText(
                       icon: Icons.person,
                       label: 'Nome',
                       controller: _nomeController,
                     ),
+                    Padding(padding: EdgeInsets.only(top: 10)),
                     //Email
                     CustomText(
                       icon: Icons.email,
                       label: 'Email',
                       controller: _emailController,
                     ),
-
+                    Padding(padding: EdgeInsets.only(top: 10)),
                     //Senha
                     CustomText(
                       icon: Icons.lock,
@@ -77,6 +85,7 @@ class _NovoUsuarioState extends State<NovoUsuario> {
                       isSecret: true,
                       controller: _senhaController,
                     ),
+                    Padding(padding: EdgeInsets.only(top: 10)),
 
                     CustomText(
                       icon: Icons.lock,
@@ -85,6 +94,7 @@ class _NovoUsuarioState extends State<NovoUsuario> {
                       controller: _confirmarSenhaController,
                     ),
 
+                    Padding(padding: EdgeInsets.only(top: 60)),
                     SizedBox(
                       height: 50,
                       child: ElevatedButton(
@@ -112,6 +122,37 @@ class _NovoUsuarioState extends State<NovoUsuario> {
                           ),
                         ),
                       ),
+                    ),
+
+                    Padding(padding: const EdgeInsets.only(top: 25)),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          child: Text(
+                            'Já tem uma conta?',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              'Entrar',
+                              style: TextStyle(
+                                color: Colors.orange,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),

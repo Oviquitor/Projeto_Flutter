@@ -20,26 +20,22 @@ class _InicioState extends State<Inicio> {
       body: Column(
         children: [
           Container(
+            padding: EdgeInsets.only(top: 25),
             child: Center(
               child: Container(
-                //padding: EdgeInsets.all(20),
                 width: 250,
                 height: 380,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage("assets/images/FartnerMobile.png"),
+                    image: AssetImage("assets/images/OutSet.png"),
                   ),
                 ),
               ),
             ),
           ),
           Container(
-            padding: EdgeInsets.only(top: 100),
+            padding: EdgeInsets.only(top: 20),
             width: 340,
-            //padding: const EdgeInsets.symmetric(
-            //  horizontal: 40,
-            //  vertical: 160,
-            //),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -98,52 +94,87 @@ class _InicioState extends State<Inicio> {
                     },
                   ),
                 ),
-                //Botoes redondo
-                Padding(
-                  padding: const EdgeInsets.only(top: 15),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Divider(
-                          color: Colors.black.withAlpha(90),
-                          thickness: 2,
+                Padding(padding: EdgeInsets.only(top: 150)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          'Termos de uso',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17,
+                          ),
                         ),
                       ),
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 15),
-                        child: Text('Ou'),
-                      ),
-                      Expanded(
-                        child: Divider(
-                          color: Colors.black.withAlpha(90),
-                          thickness: 2,
+                    ),
+                    Text('|'),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          'Privacidade',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17,
+                          ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                Container(
-                  height: 100,
-                  child: Row(
-                    children: [
-                      Padding(padding: EdgeInsets.only(left: 50)),
-                      IconButton(
-                        onPressed: () {},
-                        icon: Image.asset("assets/images/Google.png"),
-                      ),
-                      Padding(padding: EdgeInsets.only(left: 50)),
-                      IconButton(
-                        onPressed: () {},
-                        icon: Image.asset("assets/images/Facebook.png"),
-                      ),
-                      Padding(padding: EdgeInsets.only(left: 50)),
-                      IconButton(
-                        onPressed: () {},
-                        icon: Image.asset("assets/images/Linkedin.png"),
-                      ),
-                    ],
-                  ),
-                ),
+                // //Botoes redondo
+                // Padding(
+                //   padding: const EdgeInsets.only(top: 15),
+                //   child: Row(
+                //     children: [
+                //       Expanded(
+                //         child: Divider(
+                //           color: Colors.black.withAlpha(90),
+                //           thickness: 2,
+                //         ),
+                //       ),
+                //       const Padding(
+                //         padding: EdgeInsets.symmetric(horizontal: 15),
+                //         child: Text('Ou'),
+                //       ),
+                //       Expanded(
+                //         child: Divider(
+                //           color: Colors.black.withAlpha(90),
+                //           thickness: 2,
+                //         ),
+                //       ),
+                //     ],
+                //   ),
+                // ),
+                // Container(
+                //   padding: EdgeInsets.only(top: 30),
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.center,
+                //     children: [
+                //       IconButton(
+                //         onPressed: () {},
+                //         icon: Image.asset("assets/images/Google.png"),
+                //       ),
+                //       Padding(padding: EdgeInsets.only(left: 50)),
+                //       IconButton(
+                //         onPressed: () {},
+                //         icon: Image.asset("assets/images/Facebook.png"),
+                //       ),
+                //       Padding(padding: EdgeInsets.only(left: 50)),
+                //       IconButton(
+                //         onPressed: () {},
+                //         icon: Image.asset("assets/images/Linkedin.png"),
+                //       ),
+                //     ],
+                //   ),
+                // ),
               ],
             ),
           ),

@@ -17,6 +17,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final firebaseAuth = FirebaseAuth.instance;
   final _emailController = TextEditingController();
   final _senhaController = TextEditingController();
+  bool? _isChecked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -33,12 +34,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Padding(padding: EdgeInsets.only(top: 150)),
+                    const Padding(padding: EdgeInsets.only(top: 70)),
                     Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                      child: Column(
                         children: [
-                          SizedBox(
+                          const Align(
                             child: Text.rich(
                               TextSpan(
                                 style: TextStyle(
@@ -46,7 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                                 children: [
                                   TextSpan(
-                                    text: 'Ola, ',
+                                    text: 'Olá, bem vindo',
                                     style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
@@ -56,24 +56,20 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                           ),
-                          SizedBox(
-                            height: 48,
-                            width: 200,
-                            child: DefaultTextStyle(
-                              style: TextStyle(
-                                fontSize: 40,
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              child: AnimatedTextKit(
-                                pause: Duration.zero,
-                                repeatForever: true,
-                                animatedTexts: [
-                                  FadeAnimatedText('Bem Vindo'),
-                                  FadeAnimatedText('Welcome'),
-                                  FadeAnimatedText('歡迎'),
-                                  FadeAnimatedText('Bienvenido'),
-                                  FadeAnimatedText('أهلا بك'),
+                          Align(
+                            child: Text.rich(
+                              TextSpan(
+                                style: const TextStyle(
+                                  fontSize: 15,
+                                ),
+                                children: [
+                                  TextSpan(
+                                    text: 'Entre com a sua conta OutSet',
+                                    style: TextStyle(
+                                      color: Colors.grey.shade800,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
@@ -81,16 +77,61 @@ class _LoginScreenState extends State<LoginScreen> {
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 200),
-                    ),
+
+                    // child: Row(
+                    //   mainAxisAlignment: MainAxisAlignment.center,
+                    //   children: [
+                    //     SizedBox(
+                    //       child: Text.rich(
+                    //         TextSpan(
+                    //           style: TextStyle(
+                    //             fontSize: 40,
+                    //           ),
+                    //           children: [
+                    //             TextSpan(
+                    //               text: 'Ola, ',
+                    //               style: TextStyle(
+                    //                 color: Colors.black,
+                    //                 fontWeight: FontWeight.bold,
+                    //               ),
+                    //             ),
+                    //           ],
+                    //         ),
+                    //       ),
+                    //     ),
+                    //     SizedBox(
+                    //       height: 48,
+                    //       width: 200,
+                    //       child: DefaultTextStyle(
+                    //         style: TextStyle(
+                    //           fontSize: 40,
+                    //           color: Colors.black,
+                    //           fontWeight: FontWeight.bold,
+                    //         ),
+                    //         child: AnimatedTextKit(
+                    //           pause: Duration.zero,
+                    //           repeatForever: true,
+                    //           animatedTexts: [
+                    //             FadeAnimatedText('Bem Vindo'),
+                    //             FadeAnimatedText('Welcome'),
+                    //             FadeAnimatedText('歡迎'),
+                    //             FadeAnimatedText('Bienvenido'),
+                    //             FadeAnimatedText('أهلا بك'),
+                    //           ],
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ],
+                    // ),
+
+                    const Padding(padding: EdgeInsets.only(top: 180)),
                     //Email
                     CustomText(
                       icon: Icons.email,
                       label: 'Email',
                       controller: _emailController,
                     ),
-
+                    const Padding(padding: EdgeInsets.symmetric(vertical: 7)),
                     //Senha
                     CustomText(
                       icon: Icons.lock,
@@ -98,7 +139,54 @@ class _LoginScreenState extends State<LoginScreen> {
                       isSecret: true,
                       controller: _senhaController,
                     ),
+                    Row(
+                      children: [
+                        Container(
+                          child: Checkbox(
+                            value: _isChecked,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(2)),
+                            onChanged: (value) {
+                              setState(() {
+                                _isChecked = value;
+                              });
+                            },
+                          ),
+                        ),
+                        Container(
+                          child: const Text(
+                            'Manter-me logado',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 10)),
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: TextButton(
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: ((context) => RedefinirSenha()),
+                                ),
+                              );
+                            },
+                            child: const Text(
+                              'Esqueceu a senha?',
+                              style: TextStyle(
+                                color: Colors.orange,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
 
+                    const Padding(padding: EdgeInsets.symmetric(vertical: 50)),
                     //Botao Entrar
                     SizedBox(
                       height: 50,
@@ -106,7 +194,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.black,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18),
+                            borderRadius: BorderRadius.circular(9),
                           ),
                         ),
                         onPressed: () {
@@ -136,21 +224,82 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                     ),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: TextButton(
-                        onPressed: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: ((context) => RedefinirSenha()),
+
+                    // Padding(
+                    //   padding: const EdgeInsets.only(top: 30),
+                    //   child: Row(
+                    //     children: [
+                    //       Expanded(
+                    //         child: Divider(
+                    //           color: Colors.black.withAlpha(90),
+                    //           thickness: 2,
+                    //         ),
+                    //       ),
+                    //       const Padding(
+                    //         padding: EdgeInsets.symmetric(horizontal: 15),
+                    //         child: Text('Ou'),
+                    //       ),
+                    //       Expanded(
+                    //         child: Divider(
+                    //           color: Colors.black.withAlpha(90),
+                    //           thickness: 2,
+                    //         ),
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
+                    // Container(
+                    //   padding: EdgeInsets.only(top: 20),
+                    //   child: Row(
+                    //     mainAxisAlignment: MainAxisAlignment.center,
+                    //     children: [
+                    //       IconButton(
+                    //         onPressed: () {},
+                    //         icon: Image.asset("assets/images/Google.png"),
+                    //       ),
+                    //       Padding(padding: EdgeInsets.only(left: 50)),
+                    //       IconButton(
+                    //         onPressed: () {},
+                    //         icon: Image.asset("assets/images/Facebook.png"),
+                    //       ),
+                    //       Padding(padding: EdgeInsets.only(left: 50)),
+                    //       IconButton(
+                    //         onPressed: () {},
+                    //         icon: Image.asset("assets/images/Linkedin.png"),
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
+
+                    Padding(padding: const EdgeInsets.only(top: 25)),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const SizedBox(
+                          child: Text(
+                            'Ainda não tem uma conta?',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
                             ),
-                          );
-                        },
-                        child: Text(
-                          'Esqueceu a senha?',
-                          style: TextStyle(color: Colors.red),
+                          ),
                         ),
-                      ),
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: TextButton(
+                            onPressed: () {},
+                            child: const Text(
+                              'Cadastrar',
+                              style: TextStyle(
+                                color: Colors.orange,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),

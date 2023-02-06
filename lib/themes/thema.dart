@@ -7,40 +7,40 @@ ThemeData appTheme() {
     brightness: brightness,
     textTheme: const TextTheme(
       bodyText1: TextStyle(
-        fontFamily: "Poppins",
+        fontFamily: "Inter",
       ),
       bodyText2: TextStyle(
-        fontFamily: "Poppins",
+        fontFamily: "Inter",
       ),
       button: TextStyle(
-        fontFamily: "Poppins",
+        fontFamily: "Inter",
       ),
       caption: TextStyle(
-        fontFamily: "Poppins",
+        fontFamily: "Inter",
       ),
       headline1: TextStyle(
-        fontFamily: "Poppins",
+        fontFamily: "Inter",
       ),
       headline2: TextStyle(
-        fontFamily: "Poppins",
+        fontFamily: "Inter",
       ),
       headline3: TextStyle(
-        fontFamily: "Poppins",
+        fontFamily: "Inter",
       ),
       headline4: TextStyle(
-        fontFamily: "Poppins",
+        fontFamily: "Inter",
       ),
       headline5: TextStyle(
-        fontFamily: "Poppins",
+        fontFamily: "Inter",
       ),
       headline6: TextStyle(
-        fontFamily: "Poppins",
+        fontFamily: "Inter",
       ),
       subtitle1: TextStyle(
-        fontFamily: "Poppins",
+        fontFamily: "Inter",
       ),
       subtitle2: TextStyle(
-        fontFamily: "Poppins",
+        fontFamily: "Inter",
       ),
     ),
 

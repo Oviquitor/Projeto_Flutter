@@ -65,17 +65,17 @@ dev_dependencies:
 
 flutter_native_splash:
   color: "#3F51B5"
-  image: "assets/images/FartnerMobile.png"
+  image: "assets/images/OutSet.png"
   android: true
   ios: true
 
 flutter_icons:
-  image_path: "assets/images/FartnerMobile.png"
+  image_path: "assets/images/OutSet.png"
   ios: true
   remove_alpha_ios: true
   android: "launcher_icon"
   adaptive_icon_background: "#FFFFFF"
-  adaptive_icon_foreground: "assets/images/FartnerMobile.png"
+  adaptive_icon_foreground: "assets/images/OutSet.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -92,7 +92,7 @@ flutter:
   assets:
     - assets/images/notification.png
     - assets/images/google2.png
-    - assets/images/OutSet2.png
+    - assets/images/OutSet.png
     - assets/images/profile.jpg
     - assets/images/imagem.jpg
     - assets/images/inicial.png

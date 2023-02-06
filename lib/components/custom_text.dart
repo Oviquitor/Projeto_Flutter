@@ -29,8 +29,7 @@ class _CustomTextState extends State<CustomText> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 15),
+    return Container(
       child: TextFormField(
         controller: widget.controller,
         textInputAction: TextInputAction.next,
@@ -50,9 +49,7 @@ class _CustomTextState extends State<CustomText> {
               : null,
           labelText: widget.label,
           isDense: true,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(18),
-          ),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(18)),
         ),
       ),
     );
