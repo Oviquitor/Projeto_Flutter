@@ -98,7 +98,7 @@ class _NovoUsuarioState extends State<NovoUsuario> {
                               ),
                             );
                           } else {
-                            //cadastrar();
+                            cadastrar();
                           }
                         },
                         child: Text(
