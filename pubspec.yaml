@@ -65,17 +65,17 @@ dev_dependencies:
 
 flutter_native_splash:
   color: "#3F51B5"
-  image: "assets/images/OutSet.png"
+  image: "assets/images/Financas.png"
   android: true
   ios: true
 
 flutter_icons:
-  image_path: "assets/images/OutSet.png"
+  image_path: "assets/images/Financas.png"
   ios: true
   remove_alpha_ios: true
   android: "launcher_icon"
   adaptive_icon_background: "#FFFFFF"
-  adaptive_icon_foreground: "assets/images/OutSet.png"
+  adaptive_icon_foreground: "assets/images/Financas.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -93,6 +93,7 @@ flutter:
     - assets/images/notification.png
     - assets/images/google2.png
     - assets/images/OutSet.png
+    - assets/images/Financas.png
     - assets/images/profile.jpg
     - assets/images/imagem.jpg
     - assets/images/inicial.png
@@ -101,6 +102,7 @@ flutter:
     - assets/images/Facebook.png
     - assets/images/Linkedin.png
     - assets/images/avatar.png
+    
     
 
 

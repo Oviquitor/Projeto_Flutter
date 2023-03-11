@@ -6,6 +6,7 @@ import 'package:project/views/cadastrosPage/components/clientesScreen.dart';
 import 'package:project/views/cadastrosPage/produtosMain.dart';
 import 'package:project/views/cadastrosPage/components/produtosScreen.dart';
 import 'package:project/views/configPage/config.dart';
+import 'package:project/views/menuPage/components/customDrawer.dart';
 
 class Cadastros extends StatefulWidget {
   const Cadastros({super.key});
@@ -34,6 +35,8 @@ class _CadastrosState extends State<Cadastros> {
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
+        drawer: CustomDrawer(),
+        appBar: AppBar(),
         //permite fazer a navegação em forma de slide
         body: PageView(
           controller: pageController,

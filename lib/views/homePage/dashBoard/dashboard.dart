@@ -18,7 +18,12 @@ class _DashBoardState extends State<DashBoard> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: CustomDrawer(),
-      appBar: AppBar(),
+      appBar: AppBar(
+        bottomOpacity: 0,
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        iconTheme: IconThemeData(color: Colors.black),
+      ),
       body: Container(
         child: SingleChildScrollView(
           child: Column(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:project/repository/my_firebase.dart';
 import 'package:project/views/homePage/vendas/components/novaVenda.dart';
+import 'package:project/views/menuPage/components/customDrawer.dart';
 
 class Vendas extends StatefulWidget {
   const Vendas({super.key});
@@ -16,6 +17,13 @@ class _VendasState extends State<Vendas> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: CustomDrawer(),
+      appBar: AppBar(
+        bottomOpacity: 0,
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        iconTheme: IconThemeData(color: Colors.black),
+      ),
       body: Container(
         child: SingleChildScrollView(
           child: Column(

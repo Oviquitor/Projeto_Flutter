@@ -27,7 +27,7 @@ class _InicioState extends State<Inicio> {
                 height: 380,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage("assets/images/OutSet.png"),
+                    image: AssetImage("assets/images/Financas.png"),
                   ),
                 ),
               ),
@@ -105,7 +105,7 @@ class _InicioState extends State<Inicio> {
                         child: Text(
                           'Termos de uso',
                           style: TextStyle(
-                            color: Colors.black,
+                            color: Colors.blue,
                             fontWeight: FontWeight.bold,
                             fontSize: 17,
                           ),
@@ -120,7 +120,7 @@ class _InicioState extends State<Inicio> {
                         child: Text(
                           'Privacidade',
                           style: TextStyle(
-                            color: Colors.black,
+                            color: Colors.blue,
                             fontWeight: FontWeight.bold,
                             fontSize: 17,
                           ),

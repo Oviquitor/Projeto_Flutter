@@ -8,6 +8,7 @@ import 'package:project/views/homePage/financeiro/components/depositar.dart';
 import 'package:project/views/homePage/financeiro/components/pagar.dart';
 import 'package:project/views/homePage/financeiro/components/receber.dart';
 import 'package:project/views/homePage/financeiro/components/sacar.dart';
+import 'package:project/views/menuPage/components/customDrawer.dart';
 
 class Financeiro extends StatefulWidget {
   const Financeiro({super.key});
@@ -33,6 +34,13 @@ class _FinanceiroState extends State<Financeiro> {
     hoje = DateTime.now();
     String formattedDate = DateFormat.yMMMd().format(hoje);
     return Scaffold(
+      drawer: CustomDrawer(),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        iconTheme: IconThemeData(color: Colors.black),
+        elevation: 0,
+        bottomOpacity: 0,
+      ),
       body: Container(
         child: SingleChildScrollView(
           child: Column(

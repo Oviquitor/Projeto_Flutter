@@ -1,8 +1,6 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:project/components/custom_text.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:project/views/loginPage/components/esqueceuSenha.dart';
 import 'package:project/views/menuPage/menu.dart';
 
@@ -62,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             children: [
                               TextSpan(
-                                text: 'Entre com a sua conta OutSet',
+                                text: 'Entre com a sua conta Finanças',
                                 style: TextStyle(
                                   color: Colors.grey.shade800,
                                   fontWeight: FontWeight.bold,
@@ -175,7 +173,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: const Text(
                           'Esqueceu a senha?',
                           style: TextStyle(
-                            color: Colors.orange,
+                            color: Colors.blue,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -290,7 +288,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: const Text(
                           'Cadastrar',
                           style: TextStyle(
-                            color: Colors.orange,
+                            color: Colors.blue,
                             fontWeight: FontWeight.bold,
                             fontSize: 15,
                           ),

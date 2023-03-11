@@ -22,7 +22,7 @@ class _HomeState extends State<Home> {
     double displayWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       bottomNavigationBar: Container(
-        margin: EdgeInsets.all(displayWidth * 0.05),
+        margin: EdgeInsets.all(displayWidth * 0.02),
         height: displayWidth * 0.155,
         decoration: BoxDecoration(
           color: Colors.white,

@@ -32,10 +32,10 @@ class _NovoUsuarioState extends State<NovoUsuario> {
                 padding: const EdgeInsets.symmetric(horizontal: 32),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
+                  children: const [
                     SizedBox(
                       child: Text(
-                        'Olá,\nseja bem vindo\nao OutSet',
+                        'Olá,\nseja bem vindo\nao Finanças',
                         style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
@@ -63,21 +63,21 @@ class _NovoUsuarioState extends State<NovoUsuario> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Padding(padding: EdgeInsets.only(top: 80)),
+                    const Padding(padding: EdgeInsets.only(top: 80)),
                     //nome
                     CustomText(
                       icon: Icons.person,
                       label: 'Nome',
                       controller: _nomeController,
                     ),
-                    Padding(padding: EdgeInsets.only(top: 10)),
+                    const Padding(padding: EdgeInsets.only(top: 10)),
                     //Email
                     CustomText(
                       icon: Icons.email,
                       label: 'Email',
                       controller: _emailController,
                     ),
-                    Padding(padding: EdgeInsets.only(top: 10)),
+                    const Padding(padding: EdgeInsets.only(top: 10)),
                     //Senha
                     CustomText(
                       icon: Icons.lock,
@@ -85,7 +85,7 @@ class _NovoUsuarioState extends State<NovoUsuario> {
                       isSecret: true,
                       controller: _senhaController,
                     ),
-                    Padding(padding: EdgeInsets.only(top: 10)),
+                    const Padding(padding: EdgeInsets.only(top: 10)),
 
                     CustomText(
                       icon: Icons.lock,
@@ -94,7 +94,7 @@ class _NovoUsuarioState extends State<NovoUsuario> {
                       controller: _confirmarSenhaController,
                     ),
 
-                    Padding(padding: EdgeInsets.only(top: 60)),
+                    const Padding(padding: EdgeInsets.only(top: 60)),
                     SizedBox(
                       height: 50,
                       child: ElevatedButton(
@@ -103,7 +103,7 @@ class _NovoUsuarioState extends State<NovoUsuario> {
                               _senhaController.text.isEmpty ||
                               _confirmarSenhaController.text.isEmpty) {
                             ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
+                              const SnackBar(
                                 content: Text('Preencha todos os campos'),
                               ),
                             );
@@ -128,7 +128,7 @@ class _NovoUsuarioState extends State<NovoUsuario> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           child: Text(
                             'Já tem uma conta?',
                             style: TextStyle(
@@ -142,10 +142,10 @@ class _NovoUsuarioState extends State<NovoUsuario> {
                           alignment: Alignment.centerRight,
                           child: TextButton(
                             onPressed: () {},
-                            child: Text(
+                            child: const Text(
                               'Entrar',
                               style: TextStyle(
-                                color: Colors.orange,
+                                color: Colors.blue,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15,
                               ),
