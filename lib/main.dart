@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:project/firebase_options.dart';
+import 'package:project/models/gerenciamentoUsuario.dart';
 import 'package:project/views/loginPage/inicio.dart';
 import 'package:project/views/loginPage/components/login.dart';
 import 'package:project/themes/thema.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   //WidgetsFlutterBinding.ensureInitialized();
@@ -46,17 +48,20 @@ class _FireBaseState extends State<FireBase> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: FutureBuilder(
-          future: _initializeFirebase(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
-              return Inicio();
-            }
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }),
+    return Provider(
+      create: (context) => GerenciamentoUsuario(),
+      child: Scaffold(
+        body: FutureBuilder(
+            future: _initializeFirebase(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                return Inicio();
+              }
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }),
+      ),
     );
   }
 }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:project/models/gerenciamentoPagina.dart';
 import 'package:project/views/cadastrosPage/cadastrosMenu.dart';
 import 'package:project/views/homePage/home.dart';
-import 'package:project/views/homePage/vendas/vendas.dart';
 import 'package:provider/provider.dart';
 
 class Menu extends StatefulWidget {
