@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:project/views/loginPage/components/login.dart';
-import 'package:project/main.dart';
+import 'package:project/components/custom_buttom.dart';
 import 'package:project/views/loginPage/components/novoUsuario.dart';
 
 class Inicio extends StatefulWidget {
@@ -40,28 +36,7 @@ class _InicioState extends State<Inicio> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 //Entrar
-                SizedBox(
-                  height: 50,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(9),
-                      ),
-                    ),
-                    child: const Text(
-                      'Entrar',
-                      style: TextStyle(
-                        fontSize: 18,
-                      ),
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => LoginScreen()),
-                      );
-                    },
-                  ),
-                ),
+                CustomButton(),
                 const Padding(
                   padding: EdgeInsets.all(5),
                 ),
