@@ -168,32 +168,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       onPressed: () {
-                        if (formkey.currentState!.validate()) {
-                          context.read<GerenciamentoUsuario>().signIn(
-                                UsuarioModels(
-                                  _emailController.text,
-                                  _senhaController.text,
-                                ),
-                              );
-                        }
-                        // if (_emailController.text.isEmpty ||
-                        //     _senhaController.text.isEmpty) {
-                        //   ScaffoldMessenger.of(context).showSnackBar(
-                        //     const SnackBar(
-                        //       content: Text('Informe o email e a senha'),
-                        //       backgroundColor: Colors.red,
-                        //     ),
-                        //   );
-                        // } else {
-                        //   //login();
-
-                        //   Navigator.pushAndRemoveUntil(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //         builder: (BuildContext context) => Menu()),
-                        //     (Route<dynamic> route) => false,
-                        //   );
-                        // }
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => Menu(),
+                          ),
+                        );
                       },
                       child: const Text(
                         'Entrar',
@@ -241,38 +220,5 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
-  }
-
-  login() async {
-    try {
-      UserCredential usuarioCredencial =
-          await firebaseAuth.signInWithEmailAndPassword(
-        email: _emailController.text,
-        password: _senhaController.text,
-      );
-      if (usuarioCredencial != null) {
-        Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (BuildContext context) => Menu()),
-          (Route<dynamic> route) => false,
-        );
-      }
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Usuario nao encontrado'),
-            backgroundColor: Colors.red,
-          ),
-        );
-      } else if (e.code == 'wrong-password') {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Senha invalida'),
-            backgroundColor: Colors.red,
-          ),
-        );
-      }
-    }
   }
 }
