@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:project/components/custom_buttom.dart';
-import 'package:project/views/loginPage/components/login.dart';
-import 'package:project/views/loginPage/components/novoUsuario.dart';
+import 'package:project/views/InicioPage/CadastroUsuarioScreen/novoUsuario.dart';
+import 'package:project/views/InicioPage/LoginScreen/LoginScreen.dart';
 
-class Inicio extends StatefulWidget {
-  const Inicio({super.key});
+class InicioScreen extends StatefulWidget {
+  const InicioScreen({super.key});
 
   @override
-  State<Inicio> createState() => _InicioState();
+  State<InicioScreen> createState() => _InicioScreenState();
 }
 
-class _InicioState extends State<Inicio> {
+class _InicioScreenState extends State<InicioScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

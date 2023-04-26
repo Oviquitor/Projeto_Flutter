@@ -4,7 +4,6 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:project/components/custom_text.dart';
 import 'package:project/utils/usuarioFirebase.dart';
-import 'package:project/views/loginPage/inicio.dart';
 
 class NovoUsuario extends StatefulWidget {
   const NovoUsuario({super.key});
@@ -98,19 +97,7 @@ class _NovoUsuarioState extends State<NovoUsuario> {
                     SizedBox(
                       height: 50,
                       child: ElevatedButton(
-                        onPressed: () {
-                          if (_emailController.text.isEmpty ||
-                              _senhaController.text.isEmpty ||
-                              _confirmarSenhaController.text.isEmpty) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('Preencha todos os campos'),
-                              ),
-                            );
-                          } else {
-                            cadastrar();
-                          }
-                        },
+                        onPressed: () {},
                         child: Text(
                           'Criar usuario',
                           style: TextStyle(fontSize: 18),
@@ -162,48 +149,5 @@ class _NovoUsuarioState extends State<NovoUsuario> {
         ),
       ),
     );
-  }
-
-  cadastrar() async {
-    try {
-      UserCredential cadastrarCredencial =
-          await firebaseAuth.createUserWithEmailAndPassword(
-        email: _emailController.text,
-        password: _senhaController.text,
-      );
-      if (cadastrarCredencial != null &&
-          _senhaController.text == _confirmarSenhaController.text) {
-        cadastrarCredencial.user!.updateDisplayName(_nomeController.text);
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => Inicio(),
-          ),
-        );
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Senhas nao confere'),
-          ),
-        );
-      }
-      ;
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'week-password') {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Informe no minimo 6 caracteres'),
-            backgroundColor: Colors.red,
-          ),
-        );
-      } else if (e.code == 'email-already-in-use') {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Email ja foi usado'),
-            backgroundColor: Colors.red,
-          ),
-        );
-      }
-    }
   }
 }

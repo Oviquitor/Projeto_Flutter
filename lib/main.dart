@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project/firebase_options.dart';
 import 'package:project/models/gerenciamentoUsuario.dart';
-import 'package:project/views/loginPage/inicio.dart';
-import 'package:project/views/loginPage/components/login.dart';
+import 'package:project/views/InicioPage/InicioScreen/InicioScreen.dart';
 import 'package:project/themes/thema.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -55,7 +54,7 @@ class _FireBaseState extends State<FireBase> {
             future: _initializeFirebase(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.done) {
-                return Inicio();
+                return InicioScreen();
               }
               return const Center(
                 child: CircularProgressIndicator(),

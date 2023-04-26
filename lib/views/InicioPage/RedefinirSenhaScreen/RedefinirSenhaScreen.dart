@@ -3,14 +3,14 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:project/components/custom_text.dart';
 
-class RedefinirSenha extends StatefulWidget {
-  const RedefinirSenha({super.key});
+class RedefinirSenhaScreen extends StatefulWidget {
+  const RedefinirSenhaScreen({super.key});
 
   @override
-  State<RedefinirSenha> createState() => _RedefinirSenhaState();
+  State<RedefinirSenhaScreen> createState() => _RedefinirSenhaScreenState();
 }
 
-class _RedefinirSenhaState extends State<RedefinirSenha> {
+class _RedefinirSenhaScreenState extends State<RedefinirSenhaScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

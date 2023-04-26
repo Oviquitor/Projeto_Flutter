@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:project/components/custom_text.dart';
-import 'package:project/views/loginPage/inicio.dart';
+import 'package:project/views/InicioPage/InicioScreen/InicioScreen.dart';
 import 'package:project/views/menuPage/menu.dart';
 
 class Usuario {
