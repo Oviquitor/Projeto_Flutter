@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:project/helpers/validadores.dart';
 import 'package:project/models/gerenciamentoUsuario.dart';
 import 'package:project/models/usuarioModels.dart';
-import 'package:project/views/InicioPage/EsqueceuSenhaScreen/esqueceuSenha.dart';
+import 'package:project/views/InicioPage/RedefinirSenhaScreen/RedefinirSenhaScreen.dart';
 import 'package:project/views/menuPage/menu.dart';
 import 'package:provider/provider.dart';
 
@@ -140,7 +140,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           onPressed: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: ((context) => RedefinirSenha()),
+                                builder: ((context) => RedefinirSenhaScreen()),
                               ),
                             );
                           },
